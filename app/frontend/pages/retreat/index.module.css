@@ -1,0 +1,1397 @@
+:root {
+  --paper: #F4F1E9;
+  --paper-deep: #EAE4D3;
+  --paper-card: #FBFAF6;
+  --ink: #17140F;
+  --ink-soft: #6B6555;
+  --ember: #A6482B;
+  --ember-soft: #C97A56;
+  --moss: #495A3E;
+  --moss-soft: #7C8B6C;
+  --line: rgba(23, 20, 14, 0.16);
+  --line-soft: rgba(23, 20, 14, 0.08);
+}
+
+:global(html) {
+  scroll-behavior: smooth;
+}
+
+.page {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+.page * {
+  box-sizing: border-box;
+}
+.page a {
+  color: inherit;
+}
+.page h1,
+.page h2,
+.page h3 {
+  font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+  font-weight: 500;
+  text-wrap: balance;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding-inline: 24px;
+}
+@media (min-width: 640px) {
+  .wrap {
+    padding-inline: 48px;
+  }
+}
+
+.eyebrow {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 11.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+
+/* ---------- grain overlay ---------- */
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+}
+
+/* ================= TOP NAV ================= */
+.topNav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(18px, 4vw, 48px);
+  padding: 26px 24px;
+  background: transparent;
+}
+.topNav a {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(244, 241, 233, 0.88);
+  text-decoration: none;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+  transition: color 0.25s ease;
+  white-space: nowrap;
+}
+.topNav a:hover {
+  color: #fff;
+}
+@media (max-width: 640px) {
+  .topNav {
+    gap: 14px 22px;
+    padding: 18px 16px;
+  }
+  .topNav a {
+    font-size: 11px;
+  }
+}
+
+/* ================= HERO ================= */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  row-gap: 28px;
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+  background: var(--ink);
+  padding: 56px 24px 40px;
+  overflow: hidden;
+}
+@media (min-width: 900px) {
+  .hero {
+    min-height: min(100svh, 880px);
+  }
+}
+.heroVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 24%;
+  z-index: 0;
+}
+@media (min-width: 900px) {
+  .heroVideo {
+    object-position: center 42%;
+  }
+}
+.heroScrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(23, 20, 14, 0.28) 0%,
+      rgba(23, 20, 14, 0.16) 32%,
+      rgba(23, 20, 14, 0.32) 76%,
+      rgba(23, 20, 14, 0.46) 100%
+    ),
+    radial-gradient(60% 50% at 50% 40%, rgba(23, 20, 14, 0) 0%, rgba(23, 20, 14, 0.2) 100%);
+}
+.heroInner {
+  position: relative;
+  z-index: 2;
+  grid-row: 1;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.heroLogo {
+  width: min(68vw, 380px);
+  filter: drop-shadow(0 6px 24px rgba(0, 0, 0, 0.45));
+}
+@media (min-width: 900px) {
+  .heroLogo {
+    width: min(30vw, 380px);
+  }
+}
+.heroDates {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 12.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(244, 241, 233, 0.85);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+}
+.heroDatesRange {
+  font-weight: 400;
+}
+.heroDatesDays {
+  color: #fff;
+  font-weight: 600;
+  font-size: 13.5px;
+}
+.heroPlace {
+  margin-top: 10px;
+  font-size: 13px;
+  color: rgba(244, 241, 233, 0.65);
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+}
+.scrollCue {
+  position: relative;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(244, 241, 233, 0.75);
+  z-index: 2;
+}
+.scrollCue span {
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.stem {
+  width: 1px;
+  height: 34px;
+  background: linear-gradient(rgba(244, 241, 233, 0.75), transparent);
+  animation: drip 2.2s ease-in-out infinite;
+}
+@keyframes drip {
+  0% {
+    transform: scaleY(0.3);
+    transform-origin: top;
+    opacity: 0.3;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(0.3);
+    transform-origin: bottom;
+    opacity: 0.3;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stem {
+    animation: none;
+  }
+}
+
+/* ================= QUOTE ================= */
+.quote {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 96px 24px;
+  text-align: center;
+  position: relative;
+}
+.quoteMark {
+  font-family: 'Fraunces', serif;
+  font-size: 72px;
+  line-height: 1;
+  color: var(--ember-soft);
+  opacity: 0.85;
+  margin-bottom: 4px;
+}
+.quote blockquote {
+  margin: 0 auto;
+  max-width: 680px;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(19px, 3vw, 26px);
+  line-height: 1.45;
+  text-wrap: balance;
+}
+.quote cite {
+  display: block;
+  margin-top: 28px;
+  font-family: 'Work Sans', sans-serif;
+  font-style: normal;
+  font-size: 11.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(244, 241, 233, 0.55);
+}
+
+/* ================= PROGRAM ================= */
+.section {
+  padding: 88px 0;
+}
+.sectionHead {
+  max-width: 640px;
+  margin-bottom: 44px;
+}
+.sectionHead h2 {
+  font-size: clamp(30px, 4.2vw, 44px);
+  margin: 10px 0 0;
+}
+.sectionHead p {
+  margin-top: 16px;
+  font-size: 16.5px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  max-width: 56ch;
+}
+
+.programLede {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--ink);
+  max-width: 62ch;
+  margin-top: 8px;
+}
+.programFacts {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+@media (max-width: 720px) {
+  .programFacts {
+    grid-template-columns: 1fr;
+  }
+}
+.programFact {
+  background: var(--paper);
+  padding: 26px 24px;
+}
+.programFact .num {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--ember);
+}
+.programFact h3 {
+  font-size: 18px;
+  margin: 10px 0 8px;
+  font-weight: 500;
+}
+.programFact p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* ---------- schedule ---------- */
+.schedule {
+  background: var(--paper-deep);
+}
+.scheduleDays {
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+@media (max-width: 720px) {
+  .scheduleDays {
+    grid-template-columns: 1fr;
+  }
+}
+.day {
+  background: var(--paper-deep);
+  padding: 28px 24px;
+}
+.dayHead {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.dayName {
+  font-family: 'Fraunces', serif;
+  font-size: 23px;
+  font-weight: 500;
+}
+.dayDate {
+  font-size: 13px;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+}
+.dayItems {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.dayItem {
+  display: grid;
+  grid-template-columns: 104px 1fr;
+  gap: 18px;
+  padding: 11px 0;
+  border-top: 1px solid var(--line-soft);
+}
+.dayItem:first-child {
+  border-top: none;
+}
+.dayItem time {
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+  color: var(--ink-soft);
+  letter-spacing: 0.02em;
+  padding-top: 2px;
+}
+.what {
+  font-size: 15.5px;
+}
+.draftNote {
+  margin-top: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-style: italic;
+  font-family: 'Fraunces', serif;
+}
+.draftNote::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ember-soft);
+  flex: none;
+}
+
+/* ================= LEADERS ================= */
+.leadersGrid {
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+}
+@media (max-width: 760px) {
+  .leadersGrid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+.leaderPhoto {
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  max-width: 260px;
+  border-radius: 2px;
+  background: linear-gradient(150deg, var(--paper-deep), var(--paper-card));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.mono {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 64px;
+  color: var(--ink-soft);
+  opacity: 0.55;
+}
+.tag {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  background: rgba(251, 250, 246, 0.75);
+  padding: 5px 9px;
+  border: 1px solid var(--line);
+}
+.leaderPhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.leaderName {
+  margin-top: 88px;
+  font-size: 24px;
+}
+.leaderRole {
+  margin-top: 4px;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  color: var(--ember);
+  font-weight: 600;
+}
+.leaderBio {
+  margin-top: 14px;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--ink-soft);
+}
+.leaderBio.draft {
+  font-style: italic;
+}
+.leaderTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+.leaderTags span {
+  font-size: 11.5px;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+  border: 1px solid var(--line);
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+/* ================= BANYA =================
+   A dark, photographic moment — echoes the hero's video+scrim
+   treatment and brings back the beige/ink rhythm further down
+   the page instead of leaving it only at the top. */
+.banya {
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+}
+.banyaPhoto {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 75%;
+  z-index: 0;
+}
+.banyaScrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(23, 20, 14, 0.5) 0%,
+    rgba(23, 20, 14, 0.16) 30%,
+    rgba(23, 20, 14, 0.08) 60%,
+    rgba(23, 20, 14, 0.4) 100%
+  );
+}
+.banya .wrap {
+  position: relative;
+  z-index: 2;
+}
+.banyaHead {
+  max-width: 640px;
+}
+.banyaHead .eyebrow {
+  color: var(--ember-soft);
+}
+.banyaHead h2 {
+  font-size: clamp(30px, 4.2vw, 44px);
+  margin: 10px 0 0;
+  color: var(--paper);
+}
+.banyaSub {
+  margin-top: 18px;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--paper);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
+}
+.banyaBody {
+  margin-top: 16px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(244, 241, 233, 0.82);
+  max-width: 58ch;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
+}
+
+
+/* Oversized brush "S" — the actual glyph lifted from the wordmark's
+   logo artwork, used as a quiet graphic motif tying the dark
+   moments of the page together. */
+.bigS {
+  position: absolute;
+  width: clamp(150px, 19vw, 320px);
+  height: auto;
+  opacity: 0.08;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+}
+.bigSBanya {
+  right: 2%;
+  bottom: -8%;
+}
+.bigSBooking {
+  left: 2%;
+  top: -6%;
+}
+@media (max-width: 640px) {
+  .bigS {
+    width: clamp(120px, 34vw, 200px);
+  }
+}
+
+/* ================= PRACTICES ================= */
+.practicesHead {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 48px;
+  align-items: end;
+  margin-bottom: 44px;
+}
+.practicesHead .sectionHead {
+  margin-bottom: 0;
+  max-width: none;
+}
+.practicesHead .sectionHead p {
+  margin-top: 16px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+.practicesPhoto {
+  aspect-ratio: 4 / 3;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.practicesPhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+@media (max-width: 760px) {
+  .practicesHead {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.practicesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+@media (max-width: 720px) {
+  .practicesGrid {
+    grid-template-columns: 1fr;
+  }
+}
+.practiceItem {
+  background: var(--paper);
+  padding: 26px 28px;
+}
+.practiceItem h3 {
+  font-size: 18px;
+  margin: 10px 0 8px;
+  font-weight: 500;
+}
+.practiceItem p {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* ================= STAY / ПРОЖИВАНИЕ ================= */
+.stay {
+  background: var(--paper-deep);
+}
+.stay .sectionHead p {
+  max-width: 64ch;
+}
+.stayGallery {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+@media (max-width: 900px) {
+  .stayGallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.stayGalleryItem {
+  aspect-ratio: 4 / 5;
+  border-radius: 2px;
+  overflow: hidden;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: zoom-in;
+  display: block;
+}
+.stayGalleryItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.stayGalleryItem:hover img {
+  transform: scale(1.04);
+}
+
+/* ---------- food ---------- */
+.foodGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+@media (max-width: 760px) {
+  .foodGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+.foodGrid .sectionHead {
+  margin-bottom: 0;
+}
+.foodPhoto {
+  aspect-ratio: 4 / 5;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.foodPhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ================= BOOKING / УСЛОВИЯ БРОНИ =================
+   The second dark beat before the footer — closes the beige/ink
+   rhythm the hero and quote opened with. */
+.booking {
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+}
+.booking .wrap {
+  position: relative;
+  z-index: 1;
+}
+.booking .sectionHead h2 {
+  color: var(--paper);
+}
+.booking .eyebrow {
+  color: var(--ember-soft);
+}
+.booking .draftNote {
+  color: rgba(244, 241, 233, 0.55);
+}
+.bookingFacts {
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(244, 241, 233, 0.14);
+  border: 1px solid rgba(244, 241, 233, 0.14);
+}
+@media (max-width: 720px) {
+  .bookingFacts {
+    grid-template-columns: 1fr;
+  }
+}
+.bookingFact {
+  background: rgba(244, 241, 233, 0.05);
+  padding: 26px 24px;
+}
+.bookingFact h3 {
+  font-size: 18px;
+  margin: 10px 0 8px;
+  font-weight: 500;
+  color: var(--paper);
+}
+.bookingFact p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: rgba(244, 241, 233, 0.72);
+  margin: 0;
+}
+
+.bookingFact h3.bookingPrice {
+  margin: 14px 0 18px;
+  font-size: clamp(52px, 6vw, 72px);
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.bookingFact p.bookingIncludesTitle {
+  margin-bottom: 4px;
+  font-size: 11.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ember-soft);
+}
+.contactBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 36px;
+  padding: 16px 36px;
+  border: 1px solid var(--ember-soft);
+  border-radius: 2px;
+  background: var(--ember);
+  color: var(--paper);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+.contactBtn:hover {
+  background: var(--ember-soft);
+  border-color: var(--ember-soft);
+}
+@media (max-width: 720px) {
+  .contactBtn {
+    display: flex;
+    width: 100%;
+  }
+}
+
+/* ================= VENUE ================= */
+.venue {
+  background:
+    radial-gradient(60% 50% at 12% 85%, rgba(73, 90, 62, 0.12), transparent 60%),
+    var(--paper);
+}
+/* Intro: photo and text in a golden-ratio split (~61.8% / 38.2%),
+   vertically centered on each other so the block reads as one unit
+   rather than stacked, unrelated pieces. */
+.venueIntro {
+  display: grid;
+  grid-template-columns: 1.618fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+@media (max-width: 860px) {
+  .venueIntro {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+.venuePhotoMain {
+  aspect-ratio: 4 / 3;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.venuePhotoMain img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.venueText .eyebrow {
+  color: var(--moss);
+}
+.venueText h2 {
+  font-size: clamp(28px, 3.4vw, 38px);
+  margin: 10px 0 20px;
+}
+.venueText p {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  margin: 0 0 16px;
+}
+.venueText p:last-child {
+  margin-bottom: 0;
+}
+
+.venueGrid {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+@media (max-width: 720px) {
+  .venueGrid {
+    grid-template-columns: 1fr;
+  }
+}
+.venueItem {
+  background: var(--paper);
+  padding: 30px 28px;
+}
+.venueItem .eyebrow {
+  color: var(--moss);
+}
+.venueItem h3 {
+  font-size: 19px;
+  margin: 10px 0 8px;
+  font-weight: 500;
+}
+.venueItem p {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* Four photos of the grounds in a row — a quiet pause between the
+   facts and the address. */
+.venueBanner {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+@media (max-width: 860px) {
+  .venueBanner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .venueBanner {
+    grid-template-columns: 1fr;
+  }
+}
+.venueBannerItem {
+  aspect-ratio: 3 / 2;
+  border-radius: 2px;
+  overflow: hidden;
+  padding: 0;
+  background: none;
+  cursor: zoom-in;
+  display: block;
+}
+.venueBannerItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.venueBannerItem:hover img {
+  transform: scale(1.04);
+}
+
+/* Click-to-enlarge lightbox: a contained, viewport-scaled frame —
+   not a full-page takeover — so the photo just reads clearly. */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: rgba(23, 20, 14, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 24px;
+  animation: lightboxFade 0.2s ease;
+}
+@keyframes lightboxFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.lightboxImg {
+  max-width: min(880px, 100%);
+  max-height: 82vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 3px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  cursor: default;
+}
+.lightboxClose {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(244, 241, 233, 0.3);
+  background: rgba(23, 20, 14, 0.5);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+.lightboxClose:hover {
+  background: rgba(23, 20, 14, 0.75);
+}
+.lightboxArrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(244, 241, 233, 0.3);
+  background: rgba(23, 20, 14, 0.5);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+.lightboxArrow:hover {
+  background: rgba(23, 20, 14, 0.75);
+}
+.lightboxArrowPrev {
+  left: 20px;
+}
+.lightboxArrowNext {
+  right: 20px;
+}
+.lightboxCount {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(23, 20, 14, 0.5);
+  color: var(--paper);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+@media (max-width: 640px) {
+  .lightbox {
+    padding: 56px 16px;
+  }
+  .lightboxArrow {
+    width: 36px;
+    height: 36px;
+  }
+  .lightboxArrowPrev {
+    left: 10px;
+  }
+  .lightboxArrowNext {
+    right: 10px;
+  }
+}
+
+.venueTravel {
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+@media (max-width: 720px) {
+  .venueTravel {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+.venueTravel h3 {
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  margin: 0 0 10px;
+}
+.addr {
+  font-size: 15.5px;
+  line-height: 1.6;
+}
+.place {
+  font-family: 'Fraunces', serif;
+  font-size: 19px;
+  display: block;
+  margin-bottom: 4px;
+}
+.venueTravel p {
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  margin: 0 0 10px;
+}
+.venueTravel p:last-child {
+  margin-bottom: 0;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 72px 24px 40px;
+  text-align: center;
+}
+.footLogo {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 34px;
+}
+.footDates {
+  margin-top: 14px;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(244, 241, 233, 0.6);
+}
+.footPlace {
+  margin-top: 6px;
+  font-size: 14px;
+  color: rgba(244, 241, 233, 0.85);
+}
+.footNote {
+  margin-top: 34px;
+  font-size: 12.5px;
+  font-style: italic;
+  font-family: 'Fraunces', serif;
+  color: rgba(244, 241, 233, 0.45);
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 640px) {
+  /* Место: на телефоне только две фотографии */
+  .venueBanner {
+    margin-top: 40px;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .venueBannerItem {
+    aspect-ratio: 16 / 10;
+  }
+  .venueBannerItem:nth-child(n + 3) {
+    display: none;
+  }
+
+  /* Спальни: горизонтальная карусель со свайпом вместо длинной ленты */
+  .stayGallery {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .stayGallery::-webkit-scrollbar {
+    display: none;
+  }
+  .stayGalleryItem {
+    flex: 0 0 76%;
+    scroll-snap-align: start;
+  }
+}
+
+@media (max-width: 480px) {
+  .topNav {
+    gap: 10px 16px;
+    padding: 16px 12px;
+  }
+  .topNav a {
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+  }
+}
+
+/* ================= ДОПОЛНЕНИЯ ================= */
+.quote blockquote p {
+  margin: 0 0 14px;
+}
+.quote blockquote p:last-child {
+  margin-bottom: 0;
+}
+.quote blockquote p.quoteTitle {
+  margin-bottom: 22px;
+  font-style: normal;
+  font-size: clamp(30px, 5.4vw, 48px);
+  line-height: 1.15;
+}
+.ctaRow {
+  margin-top: 40px;
+  text-align: center;
+}
+.ctaRow .contactBtn {
+  margin-top: 0;
+}
+.sectionHead p + p {
+  margin-top: 14px;
+}
+.scheduleNote {
+  margin: 28px 0 0;
+  max-width: 640px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  font-style: italic;
+  font-family: 'Fraunces', serif;
+}
+.stayFactsTitle {
+  margin-top: 56px;
+  font-size: 11.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ember);
+  font-weight: 600;
+}
+.stayFacts {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+@media (max-width: 960px) {
+  .stayFacts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .stayFacts {
+    grid-template-columns: 1fr;
+  }
+}
+.stayFact {
+  background: var(--paper-card);
+  padding: 26px 22px;
+}
+.stayFact h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 500;
+}
+.stayFact p {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.stayFact p + p {
+  margin-top: 8px;
+}
+.bookingIncludes {
+  margin-top: 40px;
+}
+.bookingIncludes h3 {
+  margin: 0 0 14px;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--paper);
+}
+.bookingIncludes ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+.bookingIncludes li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgba(244, 241, 233, 0.78);
+}
+.bookingIncludes li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ember-soft);
+}
+.bookingExcluded {
+  margin: 18px 0 0;
+  font-size: 14.5px;
+  color: rgba(244, 241, 233, 0.6);
+}
+
+
+/* ================= ТИПОГРАФИКА ================= */
+.page {
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+}
+.page p,
+.page li {
+  text-wrap: pretty;
+  hyphens: none;
+  -webkit-hyphens: none;
+  overflow-wrap: break-word;
+}
+.page h1,
+.page h2,
+.page h3,
+.page h4 {
+  text-wrap: balance;
+  hyphens: none;
+}
+.what,
+.leaderRole,
+.dayDate,
+.heroPlace {
+  text-wrap: balance;
+}
+.scheduleNote,
+.banyaSub {
+  text-wrap: pretty;
+}
+
+/* Цитата на втором экране: цельные смысловые фразы, ровные строки */
+.quote blockquote p,
+.quote blockquote p.quoteTitle {
+  hyphens: none;
+  -webkit-hyphens: none;
+  text-wrap: balance;
+}
+.quote blockquote {
+  max-width: 640px;
+}
+@media (max-width: 640px) {
+  .quote {
+    padding: 72px 24px 80px;
+  }
+  .quote blockquote {
+    font-size: 19px;
+    line-height: 1.5;
+  }
+  .quote blockquote p {
+    margin-bottom: 16px;
+  }
+  .quote blockquote p.quoteTitle {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+}
+
+/* Банный ритуал: одна карточка с цельным текстом */
+.ritual {
+  margin-top: 44px;
+  max-width: 640px;
+  background: rgba(23, 20, 14, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(244, 241, 233, 0.22);
+  border-left: 3px solid var(--ember-soft);
+  padding: 34px 38px 38px;
+  color: var(--paper);
+}
+.ritual .eyebrow {
+  color: var(--ember-soft);
+}
+.ritual h3 {
+  margin: 0;
+  font-size: clamp(22px, 2.6vw, 28px);
+  line-height: 1.25;
+  color: var(--paper);
+}
+.ritual p {
+  margin: 18px 0 0;
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(244, 241, 233, 0.86);
+  text-wrap: pretty;
+}
+@media (max-width: 640px) {
+  .ritual {
+    padding: 26px 22px 28px;
+  }
+  .ritual p {
+    font-size: 15.5px;
+  }
+}
+
+.quote blockquote p.quoteText {
+  max-width: 600px;
+  margin-inline: auto;
+  text-wrap: balance;
+}
+
+.ritual p.ritualLede {
+  color: var(--paper);
+  font-size: 17px;
+}
+@media (max-width: 640px) {
+  .ritual p.ritualLede {
+    font-size: 16px;
+  }
+}
