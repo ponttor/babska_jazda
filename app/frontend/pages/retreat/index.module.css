@@ -1,15 +1,16 @@
 :root {
-  --paper: #F4F1E9;
-  --paper-deep: #EAE4D3;
-  --paper-card: #FBFAF6;
-  --ink: #17140F;
-  --ink-soft: #6B6555;
-  --ember: #A6482B;
-  --ember-soft: #C97A56;
-  --moss: #495A3E;
-  --moss-soft: #7C8B6C;
-  --line: rgba(23, 20, 14, 0.16);
-  --line-soft: rgba(23, 20, 14, 0.08);
+  /* Зимняя палитра: снег, иней, ночное небо, хвоя */
+  --paper: #F1F4F7;
+  --paper-deep: #E2E8EE;
+  --paper-card: #FAFBFD;
+  --ink: #0F1C2B;
+  --ink-soft: #586778;
+  --ember: #3D6587;
+  --ember-soft: #86A5C0;
+  --moss: #2E4A47;
+  --moss-soft: #6F8C88;
+  --line: rgba(15, 28, 43, 0.14);
+  --line-soft: rgba(15, 28, 43, 0.07);
 }
 
 :global(html) {
@@ -88,7 +89,7 @@
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(244, 241, 233, 0.88);
+  color: rgba(241, 244, 247, 0.88);
   text-decoration: none;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
   transition: color 0.25s ease;
@@ -148,12 +149,12 @@
   background:
     linear-gradient(
       180deg,
-      rgba(23, 20, 14, 0.28) 0%,
-      rgba(23, 20, 14, 0.16) 32%,
-      rgba(23, 20, 14, 0.32) 76%,
-      rgba(23, 20, 14, 0.46) 100%
+      rgba(15, 28, 43, 0.28) 0%,
+      rgba(15, 28, 43, 0.16) 32%,
+      rgba(15, 28, 43, 0.32) 76%,
+      rgba(15, 28, 43, 0.46) 100%
     ),
-    radial-gradient(60% 50% at 50% 40%, rgba(23, 20, 14, 0) 0%, rgba(23, 20, 14, 0.2) 100%);
+    radial-gradient(60% 50% at 50% 40%, rgba(15, 28, 43, 0) 0%, rgba(15, 28, 43, 0.2) 100%);
 }
 .heroInner {
   position: relative;
@@ -183,7 +184,7 @@
   font-size: 12.5px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(244, 241, 233, 0.85);
+  color: rgba(241, 244, 247, 0.85);
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
 }
 .heroDatesRange {
@@ -197,7 +198,7 @@
 .heroPlace {
   margin-top: 10px;
   font-size: 13px;
-  color: rgba(244, 241, 233, 0.65);
+  color: rgba(241, 244, 247, 0.65);
   letter-spacing: 0.04em;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
 }
@@ -208,7 +209,7 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  color: rgba(244, 241, 233, 0.75);
+  color: rgba(241, 244, 247, 0.75);
   z-index: 2;
 }
 .scrollCue span {
@@ -219,7 +220,7 @@
 .stem {
   width: 1px;
   height: 34px;
-  background: linear-gradient(rgba(244, 241, 233, 0.75), transparent);
+  background: linear-gradient(rgba(241, 244, 247, 0.75), transparent);
   animation: drip 2.2s ease-in-out infinite;
 }
 @keyframes drip {
@@ -279,7 +280,7 @@
   font-size: 11.5px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(244, 241, 233, 0.55);
+  color: rgba(241, 244, 247, 0.55);
 }
 
 /* ================= PROGRAM ================= */
@@ -468,7 +469,7 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink-soft);
-  background: rgba(251, 250, 246, 0.75);
+  background: rgba(250, 251, 253, 0.75);
   padding: 5px 9px;
   border: 1px solid var(--line);
 }
@@ -539,10 +540,10 @@
   pointer-events: none;
   background: linear-gradient(
     180deg,
-    rgba(23, 20, 14, 0.5) 0%,
-    rgba(23, 20, 14, 0.16) 30%,
-    rgba(23, 20, 14, 0.08) 60%,
-    rgba(23, 20, 14, 0.4) 100%
+    rgba(15, 28, 43, 0.5) 0%,
+    rgba(15, 28, 43, 0.16) 30%,
+    rgba(15, 28, 43, 0.08) 60%,
+    rgba(15, 28, 43, 0.4) 100%
   );
 }
 .banya .wrap {
@@ -573,7 +574,7 @@
   margin-top: 16px;
   font-size: 16px;
   line-height: 1.8;
-  color: rgba(244, 241, 233, 0.82);
+  color: rgba(241, 244, 247, 0.82);
   max-width: 58ch;
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
 }
@@ -610,7 +611,7 @@
   display: grid;
   grid-template-columns: 1.1fr 1fr;
   gap: 48px;
-  align-items: end;
+  align-items: stretch;
   margin-bottom: 44px;
 }
 .practicesHead .sectionHead {
@@ -755,15 +756,15 @@
   color: var(--ember-soft);
 }
 .booking .draftNote {
-  color: rgba(244, 241, 233, 0.55);
+  color: rgba(241, 244, 247, 0.55);
 }
 .bookingFacts {
   margin-top: 8px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1px;
-  background: rgba(244, 241, 233, 0.14);
-  border: 1px solid rgba(244, 241, 233, 0.14);
+  background: rgba(241, 244, 247, 0.14);
+  border: 1px solid rgba(241, 244, 247, 0.14);
 }
 @media (max-width: 720px) {
   .bookingFacts {
@@ -771,7 +772,7 @@
   }
 }
 .bookingFact {
-  background: rgba(244, 241, 233, 0.05);
+  background: rgba(241, 244, 247, 0.05);
   padding: 26px 24px;
 }
 .bookingFact h3 {
@@ -783,7 +784,7 @@
 .bookingFact p {
   font-size: 14.5px;
   line-height: 1.6;
-  color: rgba(244, 241, 233, 0.72);
+  color: rgba(241, 244, 247, 0.72);
   margin: 0;
 }
 
@@ -832,7 +833,7 @@
 /* ================= VENUE ================= */
 .venue {
   background:
-    radial-gradient(60% 50% at 12% 85%, rgba(73, 90, 62, 0.12), transparent 60%),
+    radial-gradient(60% 50% at 12% 85%, rgba(46, 74, 71, 0.12), transparent 60%),
     var(--paper);
 }
 /* Intro: photo and text in a golden-ratio split (~61.8% / 38.2%),
@@ -954,7 +955,7 @@
   position: fixed;
   inset: 0;
   z-index: 300;
-  background: rgba(23, 20, 14, 0.88);
+  background: rgba(15, 28, 43, 0.88);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -986,8 +987,8 @@
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  border: 1px solid rgba(244, 241, 233, 0.3);
-  background: rgba(23, 20, 14, 0.5);
+  border: 1px solid rgba(241, 244, 247, 0.3);
+  background: rgba(15, 28, 43, 0.5);
   color: var(--paper);
   display: flex;
   align-items: center;
@@ -996,7 +997,7 @@
   padding: 0;
 }
 .lightboxClose:hover {
-  background: rgba(23, 20, 14, 0.75);
+  background: rgba(15, 28, 43, 0.75);
 }
 .lightboxArrow {
   position: fixed;
@@ -1005,8 +1006,8 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 1px solid rgba(244, 241, 233, 0.3);
-  background: rgba(23, 20, 14, 0.5);
+  border: 1px solid rgba(241, 244, 247, 0.3);
+  background: rgba(15, 28, 43, 0.5);
   color: var(--paper);
   display: flex;
   align-items: center;
@@ -1015,7 +1016,7 @@
   padding: 0;
 }
 .lightboxArrow:hover {
-  background: rgba(23, 20, 14, 0.75);
+  background: rgba(15, 28, 43, 0.75);
 }
 .lightboxArrowPrev {
   left: 20px;
@@ -1028,7 +1029,7 @@
   bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(23, 20, 14, 0.5);
+  background: rgba(15, 28, 43, 0.5);
   color: var(--paper);
   font-size: 12px;
   letter-spacing: 0.04em;
@@ -1109,19 +1110,19 @@
   font-size: 13px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(244, 241, 233, 0.6);
+  color: rgba(241, 244, 247, 0.6);
 }
 .footPlace {
   margin-top: 6px;
   font-size: 14px;
-  color: rgba(244, 241, 233, 0.85);
+  color: rgba(241, 244, 247, 0.85);
 }
 .footNote {
   margin-top: 34px;
   font-size: 12.5px;
   font-style: italic;
   font-family: 'Fraunces', serif;
-  color: rgba(244, 241, 233, 0.45);
+  color: rgba(241, 244, 247, 0.45);
 }
 
 /* ================= MOBILE ================= */
@@ -1194,7 +1195,7 @@
 }
 .scheduleNote {
   margin: 28px 0 0;
-  max-width: 640px;
+  max-width: 760px;
   font-size: 14.5px;
   line-height: 1.6;
   color: var(--ink-soft);
@@ -1266,7 +1267,7 @@
   padding-left: 20px;
   font-size: 15px;
   line-height: 1.55;
-  color: rgba(244, 241, 233, 0.78);
+  color: rgba(241, 244, 247, 0.78);
 }
 .bookingIncludes li::before {
   content: "";
@@ -1281,7 +1282,7 @@
 .bookingExcluded {
   margin: 18px 0 0;
   font-size: 14.5px;
-  color: rgba(244, 241, 233, 0.6);
+  color: rgba(241, 244, 247, 0.6);
 }
 
 
@@ -1347,10 +1348,10 @@
 .ritual {
   margin-top: 44px;
   max-width: 640px;
-  background: rgba(23, 20, 14, 0.5);
+  background: rgba(15, 28, 43, 0.5);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(244, 241, 233, 0.22);
+  border: 1px solid rgba(241, 244, 247, 0.22);
   border-left: 3px solid var(--ember-soft);
   padding: 34px 38px 38px;
   color: var(--paper);
@@ -1368,7 +1369,7 @@
   margin: 18px 0 0;
   font-size: 16px;
   line-height: 1.8;
-  color: rgba(244, 241, 233, 0.86);
+  color: rgba(241, 244, 247, 0.86);
   text-wrap: pretty;
 }
 @media (max-width: 640px) {
@@ -1393,5 +1394,407 @@
 @media (max-width: 640px) {
   .ritual p.ritualLede {
     font-size: 16px;
+  }
+}
+
+/* ================= ВЫДОХ: дополнения ================= */
+.heroTitle {
+  margin: 0;
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(64px, 14vw, 132px);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: #fff;
+  text-shadow: 0 6px 28px rgba(0, 0, 0, 0.45);
+}
+.heroSub {
+  margin-top: 10px;
+  font-size: 13px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+}
+
+.programFactsFive {
+  grid-template-columns: repeat(5, 1fr);
+}
+@media (max-width: 1000px) {
+  .programFactsFive {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 720px) {
+  .programFactsFive {
+    grid-template-columns: 1fr;
+  }
+}
+
+.practicesPhotoTall {
+  aspect-ratio: 4 / 5;
+  max-height: 440px;
+  justify-self: end;
+  width: 100%;
+  max-width: 352px;
+}
+
+.scheduleDaysFour {
+  grid-template-columns: repeat(4, 1fr);
+}
+.scheduleDaysFour .day {
+  padding: 24px 20px;
+}
+@media (min-width: 1001px) {
+  .scheduleDaysFour .day {
+    padding: 20px 18px 16px;
+  }
+  .scheduleDaysFour .dayHead {
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 8px;
+  }
+  .scheduleDaysFour .dayName {
+    font-size: 20px;
+  }
+  .scheduleDaysFour .dayDate {
+    font-size: 12px;
+  }
+  .scheduleDaysFour .dayItem {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 7px 0;
+  }
+  .scheduleDaysFour .dayItem time {
+    padding-top: 0;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .scheduleDaysFour .what {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}
+@media (max-width: 1000px) {
+  .scheduleDaysFour {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .scheduleDaysFour {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stayGallerySix {
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 900px) {
+  .stayGallerySix {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.leadersGridThree {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+.leadersGridThree .leaderName {
+  margin-top: 24px;
+}
+@media (max-width: 900px) {
+  .leadersGridThree {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+/* ---------- обложка: зимняя Банская Штявница ---------- */
+.heroImage {
+  object-position: 85% center;
+}
+@media (min-width: 900px) {
+  .heroImage {
+    object-position: center 55%;
+  }
+}
+.heroScrimWinter {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(10, 20, 34, 0.55) 0%,
+      rgba(10, 20, 34, 0.38) 35%,
+      rgba(10, 20, 34, 0.42) 70%,
+      rgba(10, 20, 34, 0.62) 100%
+    ),
+    radial-gradient(55% 45% at 50% 45%, rgba(10, 20, 34, 0.35) 0%, rgba(10, 20, 34, 0) 100%);
+}
+
+.heroScrimFire {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(12, 8, 6, 0.45) 0%,
+      rgba(12, 8, 6, 0.12) 30%,
+      rgba(12, 8, 6, 0.12) 65%,
+      rgba(12, 8, 6, 0.55) 100%
+    ),
+    radial-gradient(45% 35% at 50% 45%, rgba(12, 8, 6, 0.4) 0%, rgba(12, 8, 6, 0) 100%);
+}
+
+.venueBannerThree {
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 860px) {
+  .venueBannerThree {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---------- юрта ---------- */
+.yurt {
+  background: var(--ink);
+  color: var(--paper);
+}
+.yurt .eyebrow {
+  color: var(--ember-soft);
+}
+.yurt .sectionHead p {
+  color: rgba(241, 244, 247, 0.78);
+  font-size: 16px;
+  line-height: 1.75;
+}
+.yurtGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 56px;
+  align-items: center;
+}
+.yurtPhotos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.yurtPhoto {
+  aspect-ratio: 4 / 5;
+  border-radius: 2px;
+  overflow: hidden;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: zoom-in;
+  display: block;
+}
+.yurtPhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.yurtPhoto:hover img {
+  transform: scale(1.04);
+}
+@media (max-width: 860px) {
+  .yurtGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* кнопка: белый текст на синем в любой секции (перебивает .page a { color: inherit }) */
+.page .contactBtn {
+  color: #fff;
+}
+.page .contactBtn:hover {
+  background: #2C4F6E;
+  border-color: #2C4F6E;
+}
+
+.programFactsSix {
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 900px) {
+  .programFactsSix {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .programFactsSix {
+    grid-template-columns: 1fr;
+  }
+}
+
+.venueBannerTwo {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* юрта: главный кадр — вид из окон */
+.yurtPhotos {
+  grid-template-columns: 2fr 1fr;
+  margin-top: 8px;
+}
+.yurtPhotos .yurtPhoto {
+  aspect-ratio: auto;
+  height: clamp(300px, 40vw, 540px);
+}
+.yurtPhotoMain img {
+  object-position: center 68%;
+}
+@media (max-width: 720px) {
+  .yurtPhotos {
+    grid-template-columns: 1fr;
+  }
+  .yurtPhotos .yurtPhoto {
+    height: 340px;
+  }
+}
+
+/* галерея фермы: большое озеро слева, две фотографии кухни справа */
+.venueMosaic {
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 14px;
+  height: clamp(380px, 44vw, 560px);
+}
+.venueMosaic .venueBannerItem {
+  aspect-ratio: auto;
+  height: 100%;
+  border: none;
+}
+.venueMosaic .venueBannerItem:first-child {
+  grid-row: span 2;
+}
+@media (max-width: 720px) {
+  .venueMosaic {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    height: auto;
+  }
+  .venueMosaic .venueBannerItem {
+    aspect-ratio: 3 / 2;
+    display: block;
+  }
+  .venueMosaic .venueBannerItem:first-child {
+    grid-row: auto;
+    grid-column: span 2;
+  }
+}
+
+/* галерея фермы: 2×2 крупными кадрами */
+.venueGridFour {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+.venueGridFour .venueBannerItem {
+  aspect-ratio: 3 / 2;
+  display: block;
+  border: none;
+}
+@media (max-width: 720px) {
+  .venueGridFour {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+}
+
+/* переключатель языка в верхнем меню */
+.langSwitch {
+  display: inline-flex;
+  gap: 4px;
+  padding-left: clamp(10px, 2vw, 20px);
+  border-left: 1px solid rgba(241, 244, 247, 0.35);
+}
+.page .langSwitch a {
+  padding: 2px 6px;
+  border-radius: 2px;
+  color: rgba(241, 244, 247, 0.6);
+}
+.page .langSwitch a.langActive {
+  color: #fff;
+  background: rgba(241, 244, 247, 0.16);
+}
+
+
+/* финальная цитата на фоне фото с травами и скрабом */
+.quotePhoto {
+  overflow: hidden;
+  padding-top: 128px;
+  padding-bottom: 128px;
+}
+.quotePhotoBg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 55%;
+  z-index: 0;
+}
+.quotePhotoScrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 75% at 50% 50%, rgba(15, 28, 43, 0.72) 0%, rgba(15, 28, 43, 0.42) 100%),
+    linear-gradient(180deg, rgba(15, 28, 43, 0.35) 0%, rgba(15, 28, 43, 0.2) 50%, rgba(15, 28, 43, 0.45) 100%);
+}
+.quotePhoto > *:not(.quotePhotoBg):not(.quotePhotoScrim) {
+  position: relative;
+  z-index: 2;
+}
+.quotePhoto blockquote {
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
+}
+@media (max-width: 720px) {
+  .quotePhoto {
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+}
+
+/* «Ничего не нужно заслуживать»: средний серо-голубой между расписанием и баней */
+.practicesTone,
+.page .schedule,
+.page .stay,
+.leadersTone {
+  background: #C6CFD9;
+  --ink-soft: #3F4B58;
+}
+
+/* обложка на телефоне: светлее, в кадре ноги и огонь */
+@media (max-width: 720px) {
+  .heroImage {
+    object-position: 74% center;
+    filter: brightness(1.3);
+  }
+  .heroScrimFire {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(12, 8, 6, 0.5) 0%,
+        rgba(12, 8, 6, 0.05) 28%,
+        rgba(12, 8, 6, 0.05) 70%,
+        rgba(12, 8, 6, 0.55) 100%
+      ),
+      radial-gradient(70% 30% at 50% 45%, rgba(12, 8, 6, 0.45) 0%, rgba(12, 8, 6, 0) 100%);
+  }
+}
+
+/* «Что тебя ждёт» сверху, заголовок и текст прижаты к низу фото */
+@media (min-width: 861px) {
+  .practicesHead .sectionHead {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .practicesHead .sectionHead .eyebrow {
+    margin-bottom: auto;
+  }
+  .practicesHead .sectionHead p:last-child {
+    margin-bottom: 0;
   }
 }

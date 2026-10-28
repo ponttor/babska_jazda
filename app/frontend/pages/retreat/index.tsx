@@ -1,64 +1,82 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Head } from '@inertiajs/react'
 
-import logoWhite from '../../assets/logo-white.png'
-import heroVideoUrl from '../../assets/hero-parenie.mp4'
-import heroPoster from '../../assets/hero-poster.jpg'
-import practiceHallPhoto from '../../assets/practice-hall.jpg'
-import stayDiningPhoto from '../../assets/stay-dining.jpg'
-import stayCourtyardPhoto from '../../assets/stay-courtyard.jpg'
-import venueExteriorPhoto from '../../assets/venue-exterior.jpg'
-import room1Photo from '../../assets/room-1.jpg'
-import room2Photo from '../../assets/room-2.jpg'
-import room3Photo from '../../assets/room-3.jpg'
-import room4Photo from '../../assets/room-4.jpg'
-import courtyardBuildingPhoto from '../../assets/courtyard-building.jpg'
-import courtyardTerracePhoto from '../../assets/courtyard-terrace.jpg'
-import leaderAnnaPhoto from '../../assets/leader-anna.jpg'
-import leaderTatianaPhoto from '../../assets/leader-tatiana.jpg'
 import banyaPareniePhoto from '../../assets/banya-parenie.jpg'
-import logoSGraphic from '../../assets/logo-s.png'
-import venueSaunaPhoto from '../../assets/venue-sauna.jpg'
+import leaderTatianaPhoto from '../../assets/leader-tatiana.jpg'
+import leaderAlenaMuntyanPhoto from '../../assets/leader-alena-muntiyan-v3.jpg'
+import leaderAlenaPhoto from '../../assets/leader-alena-tverezovska.jpg'
+import heroBanyaFirePhoto from '../../assets/hero-banya-fire-v2.jpg'
+import stiavnicaWinterPhoto from '../../assets/tb-stiavnica-winter.jpg'
+import moodCandlePhoto from '../../assets/tb-mood-candle.jpg'
+import nookWinterPhoto from '../../assets/tb-nook-winter.jpg'
+import yurtOutsidePhoto from '../../assets/tb-yurt-outside.jpg'
+import horsesPhoto from '../../assets/tb-horses.jpg'
+import winterForestPhoto from '../../assets/tb-winter-forest.jpg'
+import banyaHerbsPhoto from '../../assets/banya-herbs.jpg'
+import yurtWinterPhoto from '../../assets/tb-yurt-winter.jpg'
+import roomHunterPhoto from '../../assets/tb-room-hunter.jpg'
+import roomGreenPhoto from '../../assets/tb-room-green.jpg'
+import livingFireplacePhoto from '../../assets/tb-living-fireplace.jpg'
+import kitchenStovePhoto from '../../assets/tb-kitchen-stove.jpg'
+import kitchenCupboardPhoto from '../../assets/tb-kitchen-cupboard.jpg'
+import diningPhoto from '../../assets/tb-dining.jpg'
 import cs from './index.module.css'
+
+const PLACE = 'Farma Terra Belá'
+
+// Вечер пятницы и субботы: половина группы в бане, вторая половина на кино-вечере
+const EVENING_SPLIT =
+  'Банный ритуал для половины группы, у второй кино-вечер с какао и попкорном'
 
 const SCHEDULE = [
   {
-    name: 'Пятница',
-    date: '27 ноября,\u00a0заезд',
+    name: 'Четверг',
+    date: '10 декабря, заезд',
     items: [
-      { time: '15:00–18:00', what: 'Заезд, размещение,\u00a0знакомство' },
-      { time: '18:30–19:30', what: 'Ужин' },
-      { time: '20:00–22:00', what: 'Вечерняя дыхательная практика и\u00a0знакомство' },
-      { time: 'с 22:00', what: 'Свободное время' },
+      { time: 'с 15:00', what: 'Заезд, размещение, чай с дороги' },
+      { time: '19:00', what: 'Special dinner со специальным меню' },
+      { time: 'вечер', what: 'Вечер у камина, ранний сон' },
+    ],
+  },
+  {
+    name: 'Пятница',
+    date: '11 декабря',
+    items: [
+      { time: 'до 10:00', what: 'Неспешный завтрак' },
+      { time: '10:00', what: 'Йога в юрте' },
+      { time: 'день', what: 'Свободное время: поспать, почитать, погулять по зимней Банской Штявнице' },
+      { time: '14:00', what: 'Обед' },
+      { time: '16:00', what: 'Breathwork (практика дыхания)' },
+      { time: '17:00', what: EVENING_SPLIT },
+      { time: 'после бани', what: 'Ужин' },
     ],
   },
   {
     name: 'Суббота',
-    date: '28 ноября',
+    date: '12 декабря',
     items: [
-      { time: '9:00–10:00', what: 'Завтрак' },
-      { time: '11:00–12:30', what: 'Телесная практика с\u00a0Аней' },
-      { time: '12:30–13:30', what: 'Обед' },
-      { time: '13:30–15:00', what: 'Свободное время,\u00a0прогулка' },
-      { time: '15:00–20:00', what: 'Женская баня с\u00a0Таней' },
-      { time: '20:00–21:00', what: 'Ужин' },
-      { time: '21:00–22:00', what: 'Вечерняя практика' },
-      { time: 'с 22:00', what: 'Свободное время' },
+      { time: 'до 10:00', what: 'Неспешный завтрак' },
+      { time: '10:00', what: 'Йога в юрте' },
+      { time: 'день', what: 'Свободное время, лес, прогулки или ничего' },
+      { time: '14:00', what: 'Обед' },
+      { time: '16:00', what: 'Breathwork (практика дыхания)' },
+      { time: '17:00', what: 'Банный ритуал и кино-вечер, половины группы меняются местами' },
+      { time: 'после бани', what: 'Ужин' },
     ],
   },
   {
     name: 'Воскресенье',
-    date: '29 ноября,\u00a0отъезд',
+    date: '13 декабря, отъезд',
     items: [
-      { time: '9:00–10:00', what: 'Завтрак' },
-      { time: '11:00–12:30', what: 'Завершающая практика' },
-      { time: '13:00', what: 'Отъезд' },
+      { time: 'до 10:00', what: 'Неспешный завтрак' },
+      { time: '10:00', what: 'Йога в юрте' },
+      { time: 'днём', what: 'Сборы без спешки и отъезд' },
     ],
   },
 ]
 
 // Ссылка для кнопки «Связаться с нами» — Telegram
-const CONTACT_URL = 'https://t.me/nazarovateam'
+const CONTACT_URL = 'https://t.me/jugofwater'
 
 function CtaButton({ children }: { children: string }) {
   return (
@@ -71,50 +89,54 @@ function CtaButton({ children }: { children: string }) {
 type GalleryPhoto = { src: string; alt: string }
 
 const VENUE_PHOTOS: GalleryPhoto[] = [
-  { src: courtyardBuildingPhoto, alt: 'Мельница со стороны внутреннего двора' },
-  { src: stayCourtyardPhoto, alt: 'Внутренний двор мельницы, увитый цветами' },
-  { src: courtyardTerracePhoto, alt: 'Крытая терраса с гортензией у пруда' },
-  { src: venueSaunaPhoto, alt: 'Баня изнутри: полки, шайка и печь с камнями' },
+  { src: horsesPhoto, alt: 'Лошади в загоне у фермы на фоне лесистых холмов' },
+  { src: kitchenStovePhoto, alt: 'Кухня фермы с дровяной печью' },
+  { src: yurtOutsidePhoto, alt: 'Юрта на лугу с видом на горы' },
+  { src: kitchenCupboardPhoto, alt: 'Деревенский буфет и старая швейная машинка' },
+]
+
+const YURT_PHOTOS: GalleryPhoto[] = [
+  { src: yurtWinterPhoto, alt: 'Вид из юрты на заснеженный лес' },
+  { src: winterForestPhoto, alt: 'Заснеженные ели и холмы в тумане вокруг фермы' },
 ]
 
 const STAY_PHOTOS: GalleryPhoto[] = [
-  { src: room1Photo, alt: 'Спальня с бархатной кушеткой и розовыми шторами' },
-  { src: room2Photo, alt: 'Спальня в полоску, с плетёным светильником' },
-  { src: room3Photo, alt: 'Спальня в тёплых тонах с деревянным шкафом' },
-  { src: room4Photo, alt: 'Спальня с розовым текстилем и плетёным ковром' },
+  { src: roomHunterPhoto, alt: 'Спальня в охотничьем стиле с деревянным изголовьем' },
+  { src: roomGreenPhoto, alt: 'Светлая спальня с зелёными стенами и сушёными травами' },
+  { src: livingFireplacePhoto, alt: 'Гостиная с глиняной печью-камином и лежанкой у окна' },
+]
+
+type Leader = {
+  name: string
+  role: string
+  bio: string
+  photo?: string
+}
+
+// Ведущие: двух оставшихся заполнить позже (имя, роль, описание, фото)
+const LEADERS: Leader[] = [
+  {
+    name: 'Татьяна Илларионова',
+    role: 'Психолог · пармастерица',
+    photo: leaderTatianaPhoto,
+    bio: 'IFS-терапевт, сертифицированный фасилитатор breathwork. Много лет помогает женщинам услышать своё тело, снять напряжение и увеличить его энергоёмкость. Главная по бане. Никакого «сталеварного» пара: только мягкая баня, нежное и неторопливое парение, в котором легко расслабиться и довериться.',
+  },
+  {
+    name: 'Алёна Мунтиян',
+    role: 'Со-организатор ретрита · пармастерица',
+    photo: leaderAlenaMuntyanPhoto,
+    bio: 'Мать, жена и предприниматель в сфере общепита с большим опытом организации мероприятий. Знает, как сделать так, чтобы тебе было вкусно и уютно, а думать ни о чём не приходилось: всё продумано заранее, остаётся только отдыхать. В бане парит внимательно, с сенсорной заботой: чувствует, какое тепло, прикосновение и ритм нужны именно тебе.',
+  },
+  {
+    name: 'Алёна Тверезовская',
+    role: 'Инструктор йоги · нутрициолог',
+    photo: leaderAlenaPhoto,
+    bio: 'Инструктор йоги с 10-летним опытом, нутрициолог. Ведёт мягкие утренние практики, которые подойдут и тем, кто впервые встаёт на коврик: без гонки за результатом, с вниманием к дыханию и ощущениям в теле. Помогает выстроить с едой бережные отношения — как способ заботы о себе, а не набор запретов.',
+  },
 ]
 
 export default function RetreatIndex() {
   const [lightbox, setLightbox] = useState<{ photos: GalleryPhoto[]; index: number } | null>(null)
-  const heroVideoRef = useRef<HTMLVideoElement>(null)
-
-  // Автозапуск фонового видео на телефонах: iOS/Android разрешают его только при
-  // выставленном muted-атрибуте в DOM (React сам его не проставляет), плюс страховка
-  // на первое касание, если браузер всё же заблокировал автозапуск.
-  useEffect(() => {
-    const video = heroVideoRef.current
-    if (!video) return
-    video.muted = true
-    video.defaultMuted = true
-    video.setAttribute('muted', '')
-    video.setAttribute('playsinline', '')
-    video.setAttribute('webkit-playsinline', '')
-
-    const tryPlay = () => {
-      const p = video.play()
-      return p && typeof p.then === 'function' ? p : Promise.resolve()
-    }
-    // iOS засчитывает жестом только touchend/click, а не touchstart и не скролл
-    const events = ['touchend', 'pointerup', 'click', 'keydown'] as const
-    const stop = () => events.forEach((e) => window.removeEventListener(e, onInteract))
-    const onInteract = () => {
-      tryPlay().then(stop).catch(() => {})
-    }
-    events.forEach((e) => window.addEventListener(e, onInteract, { passive: true }))
-    video.addEventListener('canplay', () => tryPlay().then(stop).catch(() => {}), { once: true })
-    tryPlay().then(stop).catch(() => {})
-    return stop
-  }, [])
 
   useEffect(() => {
     if (lightbox === null) return
@@ -133,7 +155,7 @@ export default function RetreatIndex() {
 
   return (
     <div className={cs.page} lang="ru">
-      <Head title="Soft: ретрит выходного дня">
+      <Head title="Выдох: женский ретрит в Банской Штявнице">
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
@@ -156,30 +178,29 @@ export default function RetreatIndex() {
         <nav className={cs.topNav} aria-label="Разделы страницы">
           <a href="#program">О ретрите</a>
           <a href="#schedule">Расписание</a>
+          <a href="#venue">Место</a>
           <a href="#leaders">Ведущие</a>
           <a href="#booking">Условия</a>
+          <span className={cs.langSwitch}>
+            <a href="/" lang="ru" aria-current="page" className={cs.langActive}>RU</a>
+            <a href="/uk" lang="uk">UA</a>
+          </span>
         </nav>
-        <video
-          ref={heroVideoRef}
-          className={cs.heroVideo}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          poster={heroPoster}
+        <img
+          className={`${cs.heroVideo} ${cs.heroImage}`}
+          src={heroBanyaFirePhoto}
+          alt=""
           aria-hidden="true"
-        >
-          <source src={heroVideoUrl} type="video/mp4" />
-        </video>
-        <div className={cs.heroScrim} aria-hidden="true" />
+        />
+        <div className={`${cs.heroScrim} ${cs.heroScrimFire}`} aria-hidden="true" />
         <div className={cs.heroInner}>
-          <img className={cs.heroLogo} src={logoWhite} alt="Soft: weekend retreat" />
+          <h1 className={cs.heroTitle}>Выдох</h1>
+          <div className={cs.heroSub}>женский ретрит</div>
           <div className={cs.heroDates}>
-            <span className={cs.heroDatesRange}>27&ndash;29 ноября</span>
-            <span className={cs.heroDatesDays}>пятница&nbsp;&ndash;&nbsp;воскресенье</span>
+            <span className={cs.heroDatesRange}>10&ndash;13 декабря</span>
+            <span className={cs.heroDatesDays}>четверг&nbsp;&ndash;&nbsp;воскресенье</span>
           </div>
-          <div className={cs.heroPlace}>Salvey&nbsp;Mühle by&nbsp;ZaZa,&nbsp;Бранденбург</div>
+          <div className={cs.heroPlace}>{PLACE},&nbsp;Банская&nbsp;Штявница</div>
         </div>
         <div className={cs.scrollCue}>
           <span>Листайте</span>
@@ -191,10 +212,11 @@ export default function RetreatIndex() {
       <section className={cs.quote}>
         <div className={cs.quoteMark}>&ldquo;</div>
         <blockquote>
-          <p className={cs.quoteTitle}>Три дня без будильника</p>
-          <p className={cs.quoteText}>
-            Мягкие телесные практики, банные ритуалы с&nbsp;вениками, прогулки и&nbsp;тишина природы. Чтобы&nbsp;наконец выдохнуть, отпустить напряжение и&nbsp;вспомнить, каково это, когда о&nbsp;тебе&nbsp;заботятся.
+          <p className={cs.quoteTitle}>
+            Четыре дня и&nbsp;три ночи отдыха для&nbsp;себя, для&nbsp;души и&nbsp;тела, когда
+            обо&nbsp;всём позаботятся за&nbsp;тебя
           </p>
+          <p className={cs.quoteText}>Решение понадобится одно: приехать.</p>
         </blockquote>
         <div className={cs.ctaRow}>
           <CtaButton>Хочу на ретрит</CtaButton>
@@ -205,37 +227,109 @@ export default function RetreatIndex() {
       <section className={cs.section} id="program">
         <div className={cs.wrap}>
           <div className={cs.sectionHead}>
-            <div className={cs.eyebrow}>Программа</div>
-            <h2>Три дня, когда можно никуда не&nbsp;спешить</h2>
+            <div className={cs.eyebrow}>От женщины к&nbsp;женщине</div>
+            <h2>Иногда нужно просто&nbsp;выспаться</h2>
             <p className={cs.programLede}>
-              Женский ретрит выходного дня, где мы наконец вспомним о&nbsp;своём любимом теле
-              и&nbsp;о&nbsp;том, как оно ждёт заботы. Дыхательные и&nbsp;телесные практики
-              в&nbsp;зале с&nbsp;видом на&nbsp;сад, женская баня с&nbsp;мягким паром и&nbsp;парением
-              вениками, неспешные трапезы и&nbsp;тишина природного парка Unteres&nbsp;Odertal
-              вокруг. Главная задача: отдохнуть и&nbsp;насладиться временем для&nbsp;себя. Можно
-              гулять по&nbsp;территории мельницы, лежать с&nbsp;книгой или&nbsp;ничего
-              не&nbsp;делать, на&nbsp;всё это&nbsp;есть&nbsp;время.
+              Иногда для&nbsp;счастья не&nbsp;нужны трансформация, марафон желаний или&nbsp;новая
+              версия себя. Иногда нужно выспаться. Поесть вкусной еды, которую приготовила
+              не&nbsp;ты. Сходить в&nbsp;лес, отогреться в&nbsp;бане. Поговорить с&nbsp;людьми,
+              которые слушают и&nbsp;не&nbsp;оценивают. Ничего не&nbsp;делать или&nbsp;делать то,
+              что захотелось прямо&nbsp;сейчас.
+            </p>
+            <p className={cs.programLede}>
+              «Выдох» про&nbsp;максимальный отдых для&nbsp;уставших женщин. Мы никуда
+              не&nbsp;спешим: это не&nbsp;программа продуктивности, а&nbsp;несколько дней, когда
+              заботятся о&nbsp;тебе.
             </p>
           </div>
 
-          <div className={cs.programFacts}>
+          <div className={`${cs.programFacts} ${cs.programFactsSix}`}>
             <div className={cs.programFact}>
               <div className={cs.num}>01</div>
-              <h3>Дыхание и&nbsp;тело</h3>
-              <p>
-                Дыхательные сессии и&nbsp;телесные практики в&nbsp;светлом&nbsp;зале.
-              </p>
+              <h3>4 дня и 3 ночи</h3>
+              <p>С 10 по 13 декабря, без будильника и спешки. Время, чтобы по-настоящему выдохнуть и выспаться.</p>
             </div>
             <div className={cs.programFact}>
               <div className={cs.num}>02</div>
-              <h3>Баня и&nbsp;парение</h3>
-              <p>Групповая женская баня с&nbsp;мягким паром и&nbsp;парением вениками.</p>
+              <h3>Банный ритуал</h3>
+              <p>Большой ритуал парения с вениками, травами и саундхилингом.</p>
             </div>
             <div className={cs.programFact}>
               <div className={cs.num}>03</div>
-              <h3>Природа и&nbsp;тишина</h3>
-              <p>Сад, ручей и&nbsp;пруд на&nbsp;территории, прогулки и&nbsp;лёгкий хайкинг по&nbsp;парку.</p>
+              <h3>Йога</h3>
+              <p>Каждое утро в 10:00, мягко и в своём темпе.</p>
             </div>
+            <div className={cs.programFact}>
+              <div className={cs.num}>04</div>
+              <h3>Breathwork</h3>
+              <p>Мягкая практика дыхания. Помогает расслабиться и почувствовать тело.</p>
+            </div>
+            <div className={cs.programFact}>
+              <div className={cs.num}>05</div>
+              <h3>Личный повар</h3>
+              <p>Все дни нас кормит наш повар из ресторана Inside.</p>
+            </div>
+            <div className={cs.programFact}>
+              <div className={cs.num}>06</div>
+              <h3>Special dinner</h3>
+              <p>В четверг вечером особый ужин со специальным меню.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= PRACTICES / ЧТО ЖДЁТ ================= */}
+      <section className={`${cs.section} ${cs.practicesTone}`} id="practices">
+        <div className={cs.wrap}>
+          <div className={cs.practicesHead}>
+            <div className={cs.sectionHead}>
+              <div className={cs.eyebrow}>Что тебя ждёт</div>
+              <h2>Ничего не&nbsp;нужно заслуживать</h2>
+              <p>
+                Здесь не&nbsp;нужна подготовка, опыт йоги или&nbsp;желание что-то в&nbsp;себе
+                менять. Можно участвовать во&nbsp;всём, а&nbsp;можно пропустить и&nbsp;остаться
+                под&nbsp;пледом. Оба варианта правильные.
+              </p>
+            </div>
+            <div className={`${cs.practicesPhoto} ${cs.practicesPhotoTall}`}>
+              <img src={moodCandlePhoto} alt="Женщина сидит на кровати в тёплом свете лампы" />
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ================= BANYA ================= */}
+      <section className={`${cs.section} ${cs.banya}`} id="banya">
+        <img
+          className={cs.banyaPhoto}
+          src={banyaPareniePhoto}
+          alt="Татьяна парит гостью берёзовым веником в бане"
+        />
+        <div className={cs.banyaScrim} aria-hidden="true" />
+        <div className={cs.wrap}>
+          <div className={cs.banyaHead}>
+            <div className={cs.eyebrow}>Сердце ретрита</div>
+            <h2>Баня</h2>
+            <p className={cs.banyaSub}>
+              Нежное парение, травы, веники и&nbsp;звучание&nbsp;чаш.
+            </p>
+          </div>
+
+          <div className={cs.ritual}>
+            <h3>Большой банный ритуал</h3>
+            <p className={cs.ritualLede}>
+              Мы верим, что именно в&nbsp;бане часто происходит то, что нужно. У&nbsp;каждой
+              своё: свои чувства, свои мысли, своё «сейчас». После парения внутри становится
+              тише, а&nbsp;в&nbsp;голове яснее. Баня&nbsp;— волшебное пространство, которое
+              позволяет кардинально изменить состояние к&nbsp;лучшему всего за&nbsp;несколько&nbsp;часов.
+            </p>
+            <p>
+              В&nbsp;пятницу и&nbsp;субботу вечером группа делится пополам. Пока одна половина
+              в&nbsp;бане, вторая устраивает кино-вечер с&nbsp;какао и&nbsp;попкорном.
+              На&nbsp;следующий вечер меняемся. Так в&nbsp;бане не&nbsp;будет тесно,
+              и&nbsp;каждая участница получит качественный&nbsp;прогрев.
+            </p>
           </div>
         </div>
       </section>
@@ -245,10 +339,10 @@ export default function RetreatIndex() {
         <div className={cs.wrap}>
           <div className={cs.sectionHead}>
             <div className={cs.eyebrow}>Расписание</div>
-            <h2>Как проходят&nbsp;выходные</h2>
+            <h2>Как проходят эти&nbsp;дни</h2>
           </div>
 
-          <div className={cs.scheduleDays}>
+          <div className={`${cs.scheduleDays} ${cs.scheduleDaysFour}`}>
             {SCHEDULE.map((day) => (
               <div className={cs.day} key={day.name}>
                 <div className={cs.dayHead}>
@@ -267,140 +361,11 @@ export default function RetreatIndex() {
             ))}
           </div>
           <p className={cs.scheduleNote}>
-            Это ориентировочная программа. Мы оставили достаточно свободного времени, а&nbsp;участие
-            в&nbsp;практиках и&nbsp;активностях по&nbsp;желанию.
+            Это ориентировочная программа. Всё, кроме бани и&nbsp;еды, по&nbsp;желанию: если
+            хочется проспать йогу,&nbsp;проспи.
           </p>
           <div className={cs.ctaRow}>
             <CtaButton>Хочу на ретрит</CtaButton>
-          </div>
-        </div>
-      </section>
-
-      {/* ================= LEADERS ================= */}
-      <section className={cs.section} id="leaders">
-        <div className={cs.wrap}>
-          <div className={cs.sectionHead}>
-            <div className={cs.eyebrow}>Ведущие</div>
-            <h2>Кто проводит&nbsp;выходные</h2>
-          </div>
-
-          <div className={cs.leadersGrid}>
-            <div>
-              <div className={cs.leaderPhoto}>
-                <img src={leaderAnnaPhoto} alt="Анна Назарова" />
-              </div>
-              <h3 className={cs.leaderName}>Анна Назарова</h3>
-              <div className={cs.leaderRole}>Актриса&nbsp;· автор курса «Дружба с&nbsp;телом»</div>
-              <p className={cs.leaderBio}>
-                Профессиональная актриса, мама двоих детей. Несколько лет назад переехала
-                из&nbsp;Москвы в&nbsp;Берлин, где живёт и&nbsp;работает в&nbsp;кино и&nbsp;театре.
-                Автор курса «Дружба с&nbsp;телом»: более 10 лет идёт к&nbsp;дружбе со&nbsp;своим
-                телом через спорт, ежедневную зарядку и&nbsp;телесные практики. Собственный опыт РПП
-                сформировал её подход: слышать тело, принимать его и&nbsp;выстраивать с&nbsp;ним
-                дружеские отношения. Баня для&nbsp;неё становится лучшим способом замедлиться,
-                переключить внимание с&nbsp;головы на&nbsp;тело&nbsp;и&nbsp;обновиться.
-              </p>
-            </div>
-
-            <div>
-              <div className={cs.leaderPhoto}>
-                <img src={leaderTatianaPhoto} alt="Татьяна Илларионова" />
-              </div>
-              <h3 className={cs.leaderName}>Татьяна Илларионова</h3>
-              <div className={cs.leaderRole}>Психолог&nbsp;· пармастерица</div>
-              <p className={cs.leaderBio}>
-                Сертифицированный фасилитатор дыхательных и&nbsp;телесных техник с&nbsp;многолетним
-                опытом. Помогает женщинам услышать своё тело, снять напряжение и&nbsp;увеличить его
-                энергоёмкость. Проводит трансформирующие дыхательные сессии и&nbsp;нежные парения,
-                которые позволяют высвободить застарелые эмоции и&nbsp;блоки, найти внутреннюю
-                гармонию и&nbsp;почувствовать лёгкость.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ================= BANYA ================= */}
-      <section className={`${cs.section} ${cs.banya}`} id="banya">
-        <img
-          className={cs.banyaPhoto}
-          src={banyaPareniePhoto}
-          alt="Татьяна парит гостью берёзовым веником в бане"
-        />
-        <div className={cs.banyaScrim} aria-hidden="true" />
-        <img className={`${cs.bigS} ${cs.bigSBanya}`} src={logoSGraphic} aria-hidden="true" alt="" />
-        <div className={cs.wrap}>
-          <div className={cs.banyaHead}>
-            <div className={cs.eyebrow}>Ритуал</div>
-            <h2>Нежная баня</h2>
-            <p className={cs.banyaSub}>
-              Для&nbsp;тех, кто соскучился по&nbsp;родной банной традиции, запаху веников
-              и&nbsp;долгому отдыху&nbsp;без&nbsp;спешки.
-            </p>
-          </div>
-
-          <div className={cs.ritual}>
-            <h3>Большой женский банный ритуал</h3>
-            <p className={cs.ritualLede}>
-              Пятичасовой банный ритуал с&nbsp;несколькими заходами в&nbsp;парную, постепенным прогревом, парением вениками (кавказский и&nbsp;канадский&nbsp;дуб) и&nbsp;контрастными процедурами.
-            </p>
-            <p>
-              Ритуал состоит из&nbsp;нескольких этапов, между которыми мы будем отдыхать, пить травяной чай и&nbsp;восстанавливать силы. В&nbsp;программе также фитотерапия с&nbsp;использованием ароматных трав и&nbsp;практика звукового расслабления (саундхилинг).
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ================= PRACTICES ================= */}
-      <section className={cs.section} id="practices">
-        <div className={cs.wrap}>
-          <div className={cs.practicesHead}>
-            <div className={cs.sectionHead}>
-              <div className={cs.eyebrow}>Практики</div>
-              <h2>Практики, которые помогают&nbsp;замедлиться</h2>
-              <p>
-                Для&nbsp;участия не&nbsp;нужна специальная подготовка или&nbsp;опыт занятий йогой.
-                Аня и&nbsp;Таня проведут мягкие дыхательные и&nbsp;телесные практики, в&nbsp;которых главное:
-                внимание к&nbsp;себе, а&nbsp;не&nbsp;правильность выполнения&nbsp;упражнений.
-              </p>
-            </div>
-            <div className={cs.practicesPhoto}>
-              <img src={practiceHallPhoto} alt="Зал для практик: балки, тёплый свет, тишина" />
-            </div>
-          </div>
-
-          <div className={cs.practicesGrid}>
-            <div className={cs.practiceItem}>
-              <div className={cs.eyebrow}>01</div>
-              <h3>Дыхательные практики</h3>
-              <p>
-                Осознанное связное дыхание мягко выводит из&nbsp;головы в&nbsp;тело и&nbsp;снимает
-                накопленное напряжение.
-              </p>
-            </div>
-            <div className={cs.practiceItem}>
-              <div className={cs.eyebrow}>02</div>
-              <h3>Телесные практики</h3>
-              <p>
-                Мягкая работа с&nbsp;телом, растяжка и&nbsp;гвоздестояние, в&nbsp;своём&nbsp;темпе.
-              </p>
-            </div>
-            <div className={cs.practiceItem}>
-              <div className={cs.eyebrow}>03</div>
-              <h3>Женская баня и&nbsp;парение</h3>
-              <p>
-                Большой ритуал, гвоздь программы нашего ретрита. Подробнее выше,
-                в&nbsp;разделе&nbsp;«Нежная&nbsp;баня».
-              </p>
-            </div>
-            <div className={cs.practiceItem}>
-              <div className={cs.eyebrow}>04</div>
-              <h3>Тишина и&nbsp;прогулки</h3>
-              <p>
-                Свободное время и&nbsp;природный парк Unteres&nbsp;Odertal вокруг. Можно гулять,
-                глубоко дышать и&nbsp;подолгу смотреть&nbsp;на&nbsp;горизонт.
-              </p>
-            </div>
           </div>
         </div>
       </section>
@@ -410,53 +375,52 @@ export default function RetreatIndex() {
         <div className={cs.wrap}>
           <div className={cs.venueIntro}>
             <div className={cs.venuePhotoMain}>
-              <img src={venueExteriorPhoto} alt="Историческая водяная мельница Salvey Mühle снаружи" />
+              <img src={nookWinterPhoto} alt="Стол со стульями у большого окна, за окном зимние горы" />
             </div>
             <div className={cs.venueText}>
               <div className={cs.eyebrow}>Место</div>
-              <h2>Salvey&nbsp;Mühle by&nbsp;ZaZa</h2>
+              <h2>{PLACE}</h2>
               <p>
-                Мы будем жить на&nbsp;старой водяной мельнице посреди природного парка «Нижняя
-                долина Одера». У&nbsp;мельницы 20&nbsp;000&nbsp;м² собственной территории
-                и&nbsp;никаких соседей поблизости, только сад, пруд, ручей&nbsp;и&nbsp;холмы.
+                Ферма стоит в&nbsp;самом сердце заповедной области Štiavnické&nbsp;vrchy: пастбища,
+                лошади, лес и&nbsp;тишина. Вокруг размеченные туристические тропы: можно погулять по&nbsp;зимнему лесу
+                или&nbsp;покататься на&nbsp;санках, а&nbsp;ночью небо без&nbsp;городской засветки
+                и&nbsp;огромные&nbsp;звёзды.
               </p>
               <p>
-                Мельнице больше 760&nbsp;лет. Хозяева бережно её отреставрировали, сохранив
-                деревянные полы, двери и&nbsp;окна. Здесь тихо, много воздуха и&nbsp;достаточно
-                места, чтобы гулять, отдыхать у&nbsp;воды и&nbsp;никуда&nbsp;не&nbsp;спешить.
+                До&nbsp;Банской Штявницы всего 10&nbsp;минут на&nbsp;машине: старый город
+                со&nbsp;стильными кафе, ресторанами и&nbsp;зимними рождественскими&nbsp;ярмарками.
               </p>
             </div>
           </div>
 
           <div className={cs.venueGrid}>
             <div className={cs.venueItem}>
-              <div className={cs.eyebrow}>Зал</div>
-              <h3>Зал для практик</h3>
+              <div className={cs.eyebrow}>Тишина</div>
+              <h3>Пастбища и&nbsp;лошади</h3>
               <p>
-                Отдельное светлое пространство для&nbsp;йоги, телесных
-                и&nbsp;групповых&nbsp;занятий.
-              </p>
-            </div>
-            <div className={cs.venueItem}>
-              <div className={cs.eyebrow}>Баня</div>
-              <h3>Просторная сауна для&nbsp;группового парения</h3>
-              <p>
-                Стоит отдельно от&nbsp;жилого дома, рядом два душа и&nbsp;туалет. После парения
-                можно охлаждаться в&nbsp;ручье, который течёт&nbsp;по&nbsp;территории.
+                Вокруг дома загоны с&nbsp;лошадьми и&nbsp;открытые холмы. Ни&nbsp;соседей,
+                ни&nbsp;шума&nbsp;дороги.
               </p>
             </div>
             <div className={cs.venueItem}>
               <div className={cs.eyebrow}>Природа</div>
-              <h3>Unteres Odertal</h3>
+              <h3>Штявницкие горы</h3>
               <p>
-                Мельница стоит уединённо среди сада, ручья и&nbsp;пруда. Вокруг природный парк,
-                озеро и&nbsp;маршруты для&nbsp;прогулок и&nbsp;велосипеда. Ближайший город: Гарц
-                (Одер),&nbsp;около&nbsp;6&nbsp;км.
+                Заснеженный лес, озёра и&nbsp;холмы. Можно гулять сколько хочется
+                или&nbsp;смотреть на&nbsp;всё это из&nbsp;окна&nbsp;с&nbsp;чаем.
+              </p>
+            </div>
+            <div className={cs.venueItem}>
+              <div className={cs.eyebrow}>Город</div>
+              <h3>Банская Штявница рядом</h3>
+              <p>
+                10&nbsp;минут на&nbsp;машине до&nbsp;кафе, улочек и&nbsp;зимних огней
+                старого&nbsp;города.
               </p>
             </div>
           </div>
 
-          <div className={cs.venueBanner}>
+          <div className={`${cs.venueBanner} ${cs.venueGridFour}`}>
             {VENUE_PHOTOS.map((photo, i) => (
               <button
                 type="button"
@@ -474,16 +438,75 @@ export default function RetreatIndex() {
             <div>
               <h3 className={cs.eyebrow}>Адрес</h3>
               <div className={cs.addr}>
-                <span className={cs.place}>Salvey&nbsp;Mühle by&nbsp;ZaZa</span>
-                Salveymühle 3, 16307 Gartz (Oder)-Geesow, Brandenburg
+                <span className={cs.place}>{PLACE}</span>
+                Banská Belá 170, 966 15, okres Banská&nbsp;Štiavnica, Slovensko
               </div>
             </div>
             <div>
-              <h3 className={cs.eyebrow}>Как добраться из&nbsp;Берлина</h3>
-              <p>На&nbsp;машине около полутора часов от&nbsp;Berlin Alexanderplatz.</p>
+              <h3 className={cs.eyebrow}>Как добраться</h3>
+              <p>Ферма в&nbsp;10&nbsp;минутах на&nbsp;машине от&nbsp;центра Банской Штявницы.</p>
+              <p>Подробно про&nbsp;дорогу расскажем после&nbsp;записи.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= ЮРТА ================= */}
+      <section className={`${cs.section} ${cs.yurt}`} id="yurt">
+        <div className={cs.wrap}>
+          <div className={cs.sectionHead}>
+            <div className={cs.eyebrow}>Юрта</div>
+            <h2>Йога с&nbsp;видом на&nbsp;зимний&nbsp;лес</h2>
+            <p>
+              Каждое утро мы занимаемся йогой в&nbsp;юрте. Она монгольская, из&nbsp;ясеня,
+              с&nbsp;печкой, деревянным полом и&nbsp;бумажными фонарями под&nbsp;потолком.
+              А&nbsp;за&nbsp;большими окнами заснеженные холмы и&nbsp;лес.
+            </p>
+            <p>
+              Днём сюда тоже можно прийти: полежать на&nbsp;подушках с&nbsp;книгой или&nbsp;просто
+              посмотреть, как идёт&nbsp;снег.
+            </p>
+          </div>
+          <div className={cs.yurtPhotos}>
+            {YURT_PHOTOS.map((photo, i) => (
+              <button
+                type="button"
+                key={photo.src}
+                className={`${cs.yurtPhoto} ${i === 0 ? cs.yurtPhotoMain : ''}`}
+                onClick={() => setLightbox({ photos: YURT_PHOTOS, index: i })}
+                aria-label={`Увеличить: ${photo.alt}`}
+              >
+                <img src={photo.src} alt={photo.alt} />
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ================= ŠTIAVNICA ЗИМОЙ ================= */}
+      <section className={cs.section} id="stiavnica">
+        <div className={cs.wrap}>
+          <div className={cs.foodGrid}>
+            <div className={cs.foodPhoto}>
+              <img
+                src={stiavnicaWinterPhoto}
+                alt="Заснеженная Банская Штявница и Кальвария на холме"
+              />
+            </div>
+            <div className={cs.sectionHead}>
+              <div className={cs.eyebrow}>Зимой</div>
+              <h2>Банская Штявница под&nbsp;снегом</h2>
               <p>
-                На&nbsp;поезде ближайшая станция Tantow, примерно в&nbsp;2 км от&nbsp;мельницы;
-                оттуда будет организован&nbsp;трансфер.
+                Один из&nbsp;самых красивых городов Словакии, старинный горняцкий город
+                из&nbsp;списка ЮНЕСКО. Дома с&nbsp;черепичными крышами лестницей спускаются
+                по&nbsp;склонам древнего вулкана, а&nbsp;над&nbsp;ними на&nbsp;холме стоит
+                белая&nbsp;Кальвария.
+              </p>
+              <p>
+                Зимой город становится совсем сказочным: снег на&nbsp;крышах, тёплый свет
+                в&nbsp;окнах кафе, горячий шоколад и&nbsp;медленные прогулки по&nbsp;узким&nbsp;улочкам.
+                Съездить туда можно в&nbsp;свободное время, а&nbsp;можно остаться на&nbsp;ферме
+                и&nbsp;смотреть на&nbsp;заснеженный&nbsp;лес.
               </p>
             </div>
           </div>
@@ -495,22 +518,19 @@ export default function RetreatIndex() {
         <div className={cs.wrap}>
           <div className={cs.sectionHead}>
             <div className={cs.eyebrow}>Проживание</div>
-            <h2>Уютный дом среди&nbsp;природы</h2>
+            <h2>Дом, где стены пахнут&nbsp;травами</h2>
             <p>
-              На&nbsp;три дня мы поселимся в&nbsp;Salvey&nbsp;Mühle, исторической водяной мельнице
-              в&nbsp;Бранденбурге, примерно в&nbsp;полутора часах езды&nbsp;от&nbsp;Берлина.
+              Мы займём главный дом фермы {PLACE}. В&nbsp;нём пять отдельных спален, и&nbsp;каждая
+              оформлена по-своему: травяная спальня, спальня охотника, фермерская
+              спальня, «лошадиная» спальня и&nbsp;спальня в&nbsp;стиле&nbsp;бохо.
             </p>
             <p>
-              В&nbsp;нашем распоряжении будет отдельный двухэтажный жилой дом Mühlenwohnhaus
-              с&nbsp;восемью спальнями, общей гостиной, столовой и&nbsp;оборудованной&nbsp;кухней.
-            </p>
-            <p>
-              Дом рассчитан на&nbsp;12&nbsp;человек, поэтому наш ретрит пройдёт
-              в&nbsp;камерной&nbsp;обстановке.
+              Стены во&nbsp;всех спальнях покрыты глиняной штукатуркой, смешанной с&nbsp;травами,
+              а&nbsp;интерьеры вдохновлены природой&nbsp;вокруг.
             </p>
           </div>
 
-          <div className={cs.stayGallery}>
+          <div className={`${cs.stayGallery} ${cs.stayGallerySix}`}>
             {STAY_PHOTOS.map((photo, i) => (
               <button
                 type="button"
@@ -524,34 +544,25 @@ export default function RetreatIndex() {
             ))}
           </div>
 
-          <div className={cs.stayFactsTitle}>Размещение</div>
+          <div className={cs.stayFactsTitle}>Что есть в&nbsp;доме</div>
           <div className={cs.stayFacts}>
             <div className={cs.stayFact}>
-              <h3>Двухместное размещение</h3>
+              <h3>Пять спален</h3>
+              <p>Каждая в&nbsp;своём стиле, с&nbsp;глиняными стенами и&nbsp;деревом.</p>
+            </div>
+            <div className={cs.stayFact}>
+              <h3>Гостиная с&nbsp;камином</h3>
               <p>
-                Четыре уютные спальни для&nbsp;двух человек. Можно приехать с&nbsp;подругой
-                или&nbsp;разделить комнату с&nbsp;другой&nbsp;участницей.
+                Настоящий камин, шкуры, пледы и&nbsp;панорамный вид на&nbsp;загоны с&nbsp;лошадьми.
               </p>
             </div>
             <div className={cs.stayFact}>
-              <h3>Одноместное размещение</h3>
-              <p>Четыре отдельные спальни для&nbsp;тех, кому важно личное&nbsp;пространство.</p>
+              <h3>Три ванные комнаты</h3>
+              <p>Просторные душевые с&nbsp;водой из&nbsp;собственного&nbsp;источника.</p>
             </div>
             <div className={cs.stayFact}>
-              <h3>Ванные комнаты</h3>
-              <p>
-                В&nbsp;доме четыре ванные комнаты. Каждая из&nbsp;них находится в&nbsp;общем
-                пользовании у&nbsp;двух соседних спален: одной двухместной
-                и&nbsp;одной&nbsp;одноместной.
-              </p>
-              <p>Таким образом, одной ванной пользуются не&nbsp;более трёх&nbsp;человек.</p>
-            </div>
-            <div className={cs.stayFact}>
-              <h3>Что&nbsp;ещё есть в&nbsp;доме</h3>
-              <p>
-                Общая гостиная, просторная столовая, полностью оборудованная кухня, большой сад,
-                ручей и&nbsp;места для&nbsp;отдыха на&nbsp;свежем&nbsp;воздухе.
-              </p>
+              <h3>Кухня и&nbsp;столовая</h3>
+              <p>Большой общий стол, за&nbsp;которым мы будем собираться&nbsp;вместе.</p>
             </div>
           </div>
         </div>
@@ -564,78 +575,126 @@ export default function RetreatIndex() {
             <div>
               <div className={cs.sectionHead}>
                 <div className={cs.eyebrow}>Питание</div>
-                <h2>Вкусная еда без&nbsp;забот о&nbsp;готовке</h2>
+                <h2>Еда, которую приготовили для&nbsp;тебя</h2>
                 <p>
-                  Все три дня с&nbsp;нами будет личный повар, которая приготовит завтраки, обеды
-                  и&nbsp;ужины из&nbsp;свежих сезонных&nbsp;продуктов.
+                  Все дни для&nbsp;нас готовит наш собственный повар из&nbsp;ресторана Inside.
+                  Тебе остаётся только сесть за&nbsp;стол.
                 </p>
                 <p>
-                  Нас ждёт домашняя кухня: знакомые, понятные блюда из&nbsp;простых, свежих
-                  и&nbsp;сезонных продуктов, красиво сервированный стол и&nbsp;неспешные
-                  совместные&nbsp;трапезы.
+                  Перед ретритом мы пришлём каждой участнице меню, чтобы ты выбрала то, что
+                  хочется именно&nbsp;тебе.
                 </p>
                 <p>
-                  В&nbsp;течение дня будут доступны чай, кофе, вода и&nbsp;фрукты.
-                  При&nbsp;составлении меню учтём пищевые аллергии и&nbsp;особенности
-                  питания&nbsp;участниц.
+                  Ретрит начнётся с&nbsp;special dinner: в&nbsp;четверг вечером нас ждёт ужин
+                  со&nbsp;специальным меню, ради которого не&nbsp;нужно ни&nbsp;готовить,
+                  ни&nbsp;мыть&nbsp;посуду.
                 </p>
               </div>
             </div>
             <div className={cs.foodPhoto}>
-              <img src={stayDiningPhoto} alt="Общая столовая в доме мельницы" />
+              <img src={diningPhoto} alt="Накрытый стол в столовой фермы" />
             </div>
           </div>
         </div>
       </section>
 
+      {/* ================= LEADERS ================= */}
+      <section className={`${cs.section} ${cs.leadersTone}`} id="leaders">
+        <div className={cs.wrap}>
+          <div className={cs.sectionHead}>
+            <div className={cs.eyebrow}>Ведущие</div>
+            <h2>Кто о&nbsp;тебе позаботится</h2>
+          </div>
+
+          <div className={`${cs.leadersGrid} ${cs.leadersGridThree}`}>
+            {LEADERS.map((leader, i) => (
+              <div key={i}>
+                <div className={cs.leaderPhoto}>
+                  {leader.photo ? (
+                    <img src={leader.photo} alt={leader.name} />
+                  ) : (
+                    <span className={cs.mono} aria-hidden="true">
+                      {i + 1}
+                    </span>
+                  )}
+                </div>
+                <h3 className={cs.leaderName}>{leader.name}</h3>
+                <div className={cs.leaderRole}>{leader.role}</div>
+                {leader.bio ? (
+                  <p className={cs.leaderBio}>{leader.bio}</p>
+                ) : (
+                  <p className={`${cs.leaderBio} ${cs.draft}`}>Описание появится совсем&nbsp;скоро.</p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ================= CLOSING QUOTE ================= */}
+      <section className={`${cs.quote} ${cs.quotePhoto}`}>
+        <img className={cs.quotePhotoBg} src={banyaHerbsPhoto} alt="" aria-hidden="true" />
+        <div className={cs.quotePhotoScrim} aria-hidden="true" />
+        <div className={cs.quoteMark}>&ldquo;</div>
+        <blockquote>
+          <p className={cs.quoteTitle}>Мы не&nbsp;обещаем, что ты уедешь другим&nbsp;человеком</p>
+          <p className={cs.quoteText}>
+            Да и&nbsp;нужно ли? Возвращаться сразу в&nbsp;привычный ритм не&nbsp;придётся:
+            к&nbsp;детям, мужьям, работе. Можно ещё немного побыть в&nbsp;этом состоянии, никуда
+            не&nbsp;бежать и&nbsp;ничего не&nbsp;решать. Возможно, ты просто давно
+            не&nbsp;отдыхала&nbsp;по-настоящему.
+          </p>
+        </blockquote>
+      </section>
+
       {/* ================= BOOKING / УСЛОВИЯ БРОНИ ================= */}
       <section className={`${cs.section} ${cs.booking}`} id="booking">
-        <img className={`${cs.bigS} ${cs.bigSBooking}`} src={logoSGraphic} aria-hidden="true" alt="" />
         <div className={cs.wrap}>
           <div className={cs.sectionHead}>
             <div className={cs.eyebrow}>Условия</div>
-            <h2>Условия брони</h2>
+            <h2>Условия участия</h2>
           </div>
 
           <div className={cs.bookingFacts}>
             <div className={cs.bookingFact}>
               <div className={cs.eyebrow}>Стоимость участия</div>
-              <h3 className={cs.bookingPrice}>570&nbsp;€</h3>
-              <p>Общий тариф.</p>
+              <h3 className={cs.bookingPrice}>650&nbsp;€</h3>
+              <p>10&ndash;13 декабря, 4&nbsp;дня и&nbsp;3&nbsp;ночи на&nbsp;{PLACE}.</p>
             </div>
             <div className={cs.bookingFact}>
-              <div className={cs.eyebrow}>Одноместный номер</div>
-              <h3 className={cs.bookingPrice}>650&nbsp;€</h3>
-              <p>Стоимость участия при&nbsp;проживании в&nbsp;одноместном&nbsp;номере.</p>
+              <div className={cs.eyebrow}>Early bird</div>
+              <h3 className={cs.bookingPrice}>590&nbsp;€</h3>
+              <p>При оплате до&nbsp;10&nbsp;ноября.</p>
             </div>
             <div className={cs.bookingFact}>
               <div className={cs.eyebrow}>Бронирование</div>
-              <h3>Предоплата 150&nbsp;€</h3>
+              <h3>Залог 150&nbsp;€</h3>
               <p>
-                Чтобы забронировать участие, необходимо внести предоплату. При&nbsp;отмене брони
-                менее чем за&nbsp;2,5&nbsp;недели до&nbsp;заезда предоплата не&nbsp;возвращается.
+                Чтобы забронировать место, нужно внести залог. Отмена возможна
+                не&nbsp;позже чем за&nbsp;две недели до&nbsp;ретрита, то&nbsp;есть до&nbsp;26&nbsp;ноября.
               </p>
             </div>
           </div>
           <div className={cs.bookingIncludes}>
             <h3>В&nbsp;стоимость&nbsp;включено</h3>
             <ul>
-              <li>2 ночи проживания в&nbsp;Salvey&nbsp;Mühle</li>
-              <li>Питание по&nbsp;программе</li>
-              <li>Телесные практики с&nbsp;Аней и&nbsp;дыхательные практики с&nbsp;Таней</li>
-              <li>Женская баня</li>
-              <li>Все групповые&nbsp;активности</li>
+              <li>3&nbsp;ночи проживания на&nbsp;{PLACE}</li>
+              <li>Питание от&nbsp;нашего повара и&nbsp;special&nbsp;dinner</li>
+              <li>Большой банный&nbsp;ритуал</li>
+              <li>Йога каждое&nbsp;утро</li>
+              <li>Breathwork (практика дыхания)</li>
+              <li>Кино-вечер с&nbsp;какао и&nbsp;попкорном</li>
             </ul>
             <p className={cs.bookingExcluded}>Не&nbsp;включено: дорога до&nbsp;места&nbsp;проведения.</p>
           </div>
-          <CtaButton>Забронировать место</CtaButton>
+          <CtaButton>Хочу на ретрит</CtaButton>
         </div>
       </section>
 
       <footer className={cs.footer}>
-        <div className={cs.footLogo}>soft</div>
-        <div className={cs.footDates}>27&ndash;29 ноября&nbsp;· пятница&ndash;воскресенье</div>
-        <div className={cs.footPlace}>Salvey&nbsp;Mühle by&nbsp;ZaZa,&nbsp;Brandenburg</div>
+        <div className={cs.footLogo}>выдох</div>
+        <div className={cs.footDates}>10&ndash;13 декабря&nbsp;· четверг&ndash;воскресенье</div>
+        <div className={cs.footPlace}>{PLACE},&nbsp;Банская&nbsp;Штявница</div>
       </footer>
 
       {lightbox !== null && (

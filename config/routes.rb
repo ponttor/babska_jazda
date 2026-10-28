@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
   root 'retreat#index'
   get 'retreat', to: 'retreat#index'
+  get 'uk', to: 'retreat#uk'
   get 'inertia-example', to: 'inertia_example#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
