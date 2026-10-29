@@ -1768,8 +1768,8 @@
 /* обложка на телефоне: светлее, в кадре ноги и огонь */
 @media (max-width: 720px) {
   .heroImage {
-    object-position: 74% center;
-    filter: brightness(1.3);
+    object-position: center 40%;
+    filter: none;
   }
   .heroScrimFire {
     background:

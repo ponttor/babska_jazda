@@ -6,6 +6,7 @@ import leaderTatianaPhoto from '../../assets/leader-tatiana.jpg'
 import leaderAlenaMuntyanPhoto from '../../assets/leader-alena-muntiyan-v3.jpg'
 import leaderAlenaPhoto from '../../assets/leader-alena-tverezovska.jpg'
 import heroBanyaFirePhoto from '../../assets/hero-banya-fire-v2.jpg'
+import heroMobilePhoto from '../../assets/hero-mobile-venik.jpg'
 import stiavnicaWinterPhoto from '../../assets/tb-stiavnica-winter.jpg'
 import moodCandlePhoto from '../../assets/tb-mood-candle.jpg'
 import nookWinterPhoto from '../../assets/tb-nook-winter.jpg'
@@ -188,12 +189,15 @@ export default function RetreatUk() {
             <a href="/uk" lang="uk" aria-current="page" className={cs.langActive}>UA</a>
           </span>
         </nav>
-        <img
-          className={`${cs.heroVideo} ${cs.heroImage}`}
-          src={heroBanyaFirePhoto}
-          alt=""
-          aria-hidden="true"
-        />
+        <picture>
+          <source media="(max-width: 720px)" srcSet={heroMobilePhoto} />
+          <img
+            className={`${cs.heroVideo} ${cs.heroImage}`}
+            src={heroBanyaFirePhoto}
+            alt=""
+            aria-hidden="true"
+          />
+        </picture>
         <div className={`${cs.heroScrim} ${cs.heroScrimFire}`} aria-hidden="true" />
         <div className={cs.heroInner}>
           <h1 className={cs.heroTitle}>Видих</h1>
@@ -254,7 +258,7 @@ export default function RetreatUk() {
             <div className={cs.programFact}>
               <div className={cs.num}>02</div>
               <h3>Банний ритуал</h3>
-              <p>Великий ритуал парення з&nbsp;віниками, травами й&nbsp;саундхілінгом.</p>
+              <p>Великий ритуал парення з&nbsp;віниками, травами й&nbsp;тибетськими чашами.</p>
             </div>
             <div className={cs.programFact}>
               <div className={cs.num}>03</div>
@@ -405,7 +409,7 @@ export default function RetreatUk() {
             </div>
             <div className={cs.venueItem}>
               <div className={cs.eyebrow}>Природа</div>
-              <h3>Штявницькі гори</h3>
+              <h3>Štiavnické vrchy</h3>
               <p>
                 Засніжений ліс, озера й&nbsp;пагорби. Можна гуляти скільки завгодно
                 або&nbsp;дивитися на&nbsp;все це з&nbsp;вікна&nbsp;з&nbsp;чаєм.
@@ -495,8 +499,8 @@ export default function RetreatUk() {
               <div className={cs.eyebrow}>Взимку</div>
               <h2>Банська Штявниця під&nbsp;снігом</h2>
               <p>
-                Одне з&nbsp;найгарніших міст Словаччини, старовинне гірниче місто зі&nbsp;списку
-                ЮНЕСКО. Будинки з&nbsp;черепичними дахами сходинками спускаються схилами
+                Одне з&nbsp;найгарніших міст Словаччини, старовинне місто
+                срібних копалень зі&nbsp;списку ЮНЕСКО. Будинки з&nbsp;черепичними дахами сходинками спускаються схилами
                 давнього вулкана, а&nbsp;над&nbsp;ними на&nbsp;пагорбі стоїть
                 біла&nbsp;Кальварія.
               </p>
@@ -579,10 +583,6 @@ export default function RetreatUk() {
                   залишається тільки сісти за&nbsp;стіл.
                 </p>
                 <p>
-                  Перед ретритом ми надішлемо кожній учасниці меню, щоб ти обрала те, чого
-                  хочеться саме&nbsp;тобі.
-                </p>
-                <p>
                   Ретрит почнеться зі&nbsp;special dinner: у&nbsp;четвер увечері на&nbsp;нас чекає
                   вечеря зі&nbsp;спеціальним меню, заради якої не&nbsp;треба ні&nbsp;готувати,
                   ні&nbsp;мити&nbsp;посуд.
@@ -635,12 +635,11 @@ export default function RetreatUk() {
         <div className={cs.quotePhotoScrim} aria-hidden="true" />
         <div className={cs.quoteMark}>&ldquo;</div>
         <blockquote>
-          <p className={cs.quoteTitle}>Ми не&nbsp;обіцяємо, що ти поїдеш іншою&nbsp;людиною</p>
+          <p className={cs.quoteTitle}>Зміни починаються з&nbsp;відпочинку</p>
           <p className={cs.quoteText}>
-            Та й&nbsp;чи треба? Повертатися одразу у&nbsp;звичний ритм не&nbsp;доведеться:
-            до&nbsp;дітей, чоловіків, роботи. Можна ще трохи побути в&nbsp;цьому стані, нікуди
-            не&nbsp;бігти й&nbsp;нічого не&nbsp;вирішувати. Можливо, ти просто давно
-            не&nbsp;відпочивала&nbsp;по-справжньому.
+            Щоб якісно щось змінити в&nbsp;житті, спершу треба якісно відпочити: виспатися,
+            зігрітися, відновити сили. Тоді й&nbsp;рішення приходять самі, і&nbsp;на&nbsp;них
+            вистачає енергії. Можливо, ти просто давно не&nbsp;відпочивала&nbsp;по-справжньому.
           </p>
         </blockquote>
       </section>
@@ -662,11 +661,11 @@ export default function RetreatUk() {
             <div className={cs.bookingFact}>
               <div className={cs.eyebrow}>Early bird</div>
               <h3 className={cs.bookingPrice}>590&nbsp;€</h3>
-              <p>У&nbsp;разі оплати до&nbsp;10&nbsp;листопада.</p>
+              <p>У&nbsp;разі оплати до&nbsp;5&nbsp;листопада.</p>
             </div>
             <div className={cs.bookingFact}>
               <div className={cs.eyebrow}>Бронювання</div>
-              <h3>Застава 150&nbsp;€</h3>
+              <h3>Застава 300&nbsp;€</h3>
               <p>
                 Щоб забронювати місце, треба внести заставу. Скасування можливе
                 не&nbsp;пізніше ніж за&nbsp;два тижні до&nbsp;ретриту, тобто до&nbsp;26&nbsp;листопада.

@@ -6,6 +6,7 @@ import leaderTatianaPhoto from '../../assets/leader-tatiana.jpg'
 import leaderAlenaMuntyanPhoto from '../../assets/leader-alena-muntiyan-v3.jpg'
 import leaderAlenaPhoto from '../../assets/leader-alena-tverezovska.jpg'
 import heroBanyaFirePhoto from '../../assets/hero-banya-fire-v2.jpg'
+import heroMobilePhoto from '../../assets/hero-mobile-venik.jpg'
 import stiavnicaWinterPhoto from '../../assets/tb-stiavnica-winter.jpg'
 import moodCandlePhoto from '../../assets/tb-mood-candle.jpg'
 import nookWinterPhoto from '../../assets/tb-nook-winter.jpg'
@@ -186,12 +187,15 @@ export default function RetreatIndex() {
             <a href="/uk" lang="uk">UA</a>
           </span>
         </nav>
-        <img
-          className={`${cs.heroVideo} ${cs.heroImage}`}
-          src={heroBanyaFirePhoto}
-          alt=""
-          aria-hidden="true"
-        />
+        <picture>
+          <source media="(max-width: 720px)" srcSet={heroMobilePhoto} />
+          <img
+            className={`${cs.heroVideo} ${cs.heroImage}`}
+            src={heroBanyaFirePhoto}
+            alt=""
+            aria-hidden="true"
+          />
+        </picture>
         <div className={`${cs.heroScrim} ${cs.heroScrimFire}`} aria-hidden="true" />
         <div className={cs.heroInner}>
           <h1 className={cs.heroTitle}>Выдох</h1>
@@ -252,7 +256,7 @@ export default function RetreatIndex() {
             <div className={cs.programFact}>
               <div className={cs.num}>02</div>
               <h3>Банный ритуал</h3>
-              <p>Большой ритуал парения с вениками, травами и саундхилингом.</p>
+              <p>Большой ритуал парения с вениками, травами и&nbsp;тибетскими чашами.</p>
             </div>
             <div className={cs.programFact}>
               <div className={cs.num}>03</div>
@@ -404,7 +408,7 @@ export default function RetreatIndex() {
             </div>
             <div className={cs.venueItem}>
               <div className={cs.eyebrow}>Природа</div>
-              <h3>Штявницкие горы</h3>
+              <h3>Štiavnické vrchy</h3>
               <p>
                 Заснеженный лес, озёра и&nbsp;холмы. Можно гулять сколько хочется
                 или&nbsp;смотреть на&nbsp;всё это из&nbsp;окна&nbsp;с&nbsp;чаем.
@@ -497,8 +501,8 @@ export default function RetreatIndex() {
               <div className={cs.eyebrow}>Зимой</div>
               <h2>Банская Штявница под&nbsp;снегом</h2>
               <p>
-                Один из&nbsp;самых красивых городов Словакии, старинный горняцкий город
-                из&nbsp;списка ЮНЕСКО. Дома с&nbsp;черепичными крышами лестницей спускаются
+                Один из&nbsp;самых красивых городов Словакии, старинный город
+                серебряных рудников из&nbsp;списка ЮНЕСКО. Дома с&nbsp;черепичными крышами лестницей спускаются
                 по&nbsp;склонам древнего вулкана, а&nbsp;над&nbsp;ними на&nbsp;холме стоит
                 белая&nbsp;Кальвария.
               </p>
@@ -581,10 +585,6 @@ export default function RetreatIndex() {
                   Тебе остаётся только сесть за&nbsp;стол.
                 </p>
                 <p>
-                  Перед ретритом мы пришлём каждой участнице меню, чтобы ты выбрала то, что
-                  хочется именно&nbsp;тебе.
-                </p>
-                <p>
                   Ретрит начнётся с&nbsp;special dinner: в&nbsp;четверг вечером нас ждёт ужин
                   со&nbsp;специальным меню, ради которого не&nbsp;нужно ни&nbsp;готовить,
                   ни&nbsp;мыть&nbsp;посуду.
@@ -637,12 +637,11 @@ export default function RetreatIndex() {
         <div className={cs.quotePhotoScrim} aria-hidden="true" />
         <div className={cs.quoteMark}>&ldquo;</div>
         <blockquote>
-          <p className={cs.quoteTitle}>Мы не&nbsp;обещаем, что ты уедешь другим&nbsp;человеком</p>
+          <p className={cs.quoteTitle}>Перемены начинаются с&nbsp;отдыха</p>
           <p className={cs.quoteText}>
-            Да и&nbsp;нужно ли? Возвращаться сразу в&nbsp;привычный ритм не&nbsp;придётся:
-            к&nbsp;детям, мужьям, работе. Можно ещё немного побыть в&nbsp;этом состоянии, никуда
-            не&nbsp;бежать и&nbsp;ничего не&nbsp;решать. Возможно, ты просто давно
-            не&nbsp;отдыхала&nbsp;по-настоящему.
+            Чтобы что-то качественно изменить в&nbsp;жизни, сначала нужно качественно отдохнуть:
+            выспаться, отогреться, восстановить силы. Тогда и&nbsp;решения приходят сами,
+            и&nbsp;на&nbsp;них хватает энергии. Возможно, ты просто давно не&nbsp;отдыхала&nbsp;по-настоящему.
           </p>
         </blockquote>
       </section>
@@ -664,11 +663,11 @@ export default function RetreatIndex() {
             <div className={cs.bookingFact}>
               <div className={cs.eyebrow}>Early bird</div>
               <h3 className={cs.bookingPrice}>590&nbsp;€</h3>
-              <p>При оплате до&nbsp;10&nbsp;ноября.</p>
+              <p>При оплате до&nbsp;5&nbsp;ноября.</p>
             </div>
             <div className={cs.bookingFact}>
               <div className={cs.eyebrow}>Бронирование</div>
-              <h3>Залог 150&nbsp;€</h3>
+              <h3>Залог 300&nbsp;€</h3>
               <p>
                 Чтобы забронировать место, нужно внести залог. Отмена возможна
                 не&nbsp;позже чем за&nbsp;две недели до&nbsp;ретрита, то&nbsp;есть до&nbsp;26&nbsp;ноября.
